@@ -1,14 +1,13 @@
 
 import Navbar from "./components/Navbar";
 import PopularMovies from "./components/PopularMovies";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import PopularShows  from "./components/PopularShows";
 
 export default function Home() {  
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-20">
-        <Navbar />
+      <main className="flex min-h-screen flex-col items-center justify-between  ">
+        <Navbar/>
         <div className="WelcomeDiv ">
           <h1 className="text-6xl font-bold text-center" id="Welcome">
             Welcome to Couch Critics
@@ -18,6 +17,7 @@ export default function Home() {
           </p>
         </div>
         <PopularMovies />
+        <PopularShows />
 
       </main>
     </>
