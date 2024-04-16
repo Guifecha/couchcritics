@@ -14,16 +14,65 @@
 body {
   background-color: var(--color5);
   color: var(--color1);
-  margin: auto;
+  margin: none;
   overflow: hidden;
 }
 
-#Welcome {
-  margin-top: 15%;
+
+.PopularMovies {
+  width: 100%;
 }
 
-#description {
-  margin-top: 1%;
+.PopularMovies h1 {
+  font-size: 40px;
+  text-align: left;
+  text-shadow: 2px 2px 4px #00000080;
+  /* adjust as needed */
+}
+
+#Description {
+  margin-bottom: 0%;
+}
+
+
+.WelcomeDiv {
+  margin-bottom: 0%;
+}
+
+.flex-container {
+  display: flex;
+  align-items: baseline;
+}
+
+#searchBar {
+  display: block;
+  width: 0;
+  opacity: 30%;
+  transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  border-radius: 10px;
+  background-color: var(--color2);
+  color: var(--color1);
+  margin-left: 40px;
+}
+
+#searchBar::placeholder {
+  color: var(--color1);
+  text-align: center;
+}
+
+
+
+
+#searchToggle:checked+label+#searchBar {
+  width: 200px;
+  /* or whatever width you want */
+  opacity: 1;
+  color: var(--color1);
+
+}
+
+nav {
+  align-items: baseline;
 }
 
 

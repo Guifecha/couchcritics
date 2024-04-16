@@ -1,15 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   return (
     <nav className="flex justify-between w-full">
-        <h1 className="text-2xl font-bold">Couch Critics</h1>
-        <div className="flex space-x-4">
-          <a href="/Movies">MOVIES</a>
-          <a href="/Shows">TV SHOWS</a>
-        </div>
-      </nav>
-  )
-}
+      <h1 className="text-2xl font-bold">Couch Critics</h1>
+      <div className="flex space-x-20 items-baseline" >
+        <a href="/Movies">MOVIES</a>
+        <a href="">TV SHOWS</a>
+        <input type="checkbox" id="searchToggle" className="hidden" />
+        <label htmlFor="searchToggle">
+          <FontAwesomeIcon icon={faMagnifyingGlass} style={{ width: '1em', height: '1em' }} />
+        </label>
+        <input type="text" id="searchBar" className="hidden" placeholder="Search..." />
+        <a href="/About">
+          <FontAwesomeIcon icon={faUser} style={{ width: '1em', height: '1em' }} />
+        </a>
+      </div>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
