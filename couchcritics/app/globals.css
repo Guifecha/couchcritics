@@ -18,6 +18,15 @@ body {
   overflow: hidden;
 }
 
+#Welcome {
+  margin-top: 15%;
+}
+
+#description {
+  margin-top: 1%;
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
