@@ -26,7 +26,7 @@ async function getTvShows(){
 // fetch a paginated records list
 
 
-export default async function movies(){
+export default async function tvshows(){
   const tvshows = await getTvShows();
   console.log(tvshows);
 
@@ -38,10 +38,9 @@ export default async function movies(){
       </h1>
       <div className="grid grid-cols-3 gap-4 mt-8">
         {tvshows.map(show => (
-          <div key={show.id} className="bg-gray-200 text-gray-800 p-4 rounded-lg">
-            <h2 className="text-xl font-bold ">{show.title}</h2>
-            <p>Rating: {show.rating}</p>
-            <p>Genre: {show.genre}</p>
+          <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg">
+            <img src={show.image_path} alt={show.title}  style={{ width: '250px', height: '350px' }} />
+            <p className="text-bold">{show.title}</p>
           </div>
         ))}
       </div>

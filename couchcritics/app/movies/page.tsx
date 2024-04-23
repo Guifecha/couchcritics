@@ -35,12 +35,11 @@ export default async function movies(){
       <h1 className="text-6xl font-bold text-center" id="Welcome">
         MOVIES
       </h1>
-      <div className="grid grid-cols-3 gap-4 mt-8">
+      <div className="grid grid-cols-3 gap-4 mt-20">
         {movies.map(movie => (
-          <div key={movie.id} className="bg-gray-200 text-gray-800 p-4 rounded-lg">
-            <h2 className="text-xl font-bold ">{movie.title}</h2>
-            <p>Rating: {movie.rating}</p>
-            <p>Genre: {movie.genre}</p>
+          <div key={movie.id} className="bg-black text-white p-1 rounded-lg text-center ">
+            <img src={movie.image_path} alt={movie.title}  style={{ width: '250px', height: '350px' }} />
+            <p>{movie.title}</p>
             
           </div>
         ))}
