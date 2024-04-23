@@ -12,18 +12,23 @@ export const dynamic = 'auto',
 
 
 async function getTvShows(){
-  const pb = new PocketBase('http://192.168.110.109:8090')
-  const resultList = await pb.collection('tvshows').getList(1, 50, {
-  });
-  return resultList?.items as any[];
+  try{
+    const pb = new PocketBase('http://127.0.0.1:8090')
+    const resultList = await pb.collection('tvshows').getList(1, 50, {
+    });
+    return resultList?.items as any[];
+  } catch (error) {
+    console.error('An error occurred while fetching', error);
+    return [];
+  }
 }
 
 // fetch a paginated records list
 
 
 export default async function movies(){
-  const movies = await getTvShows();
-  console.log(movies);
+  const tvshows = await getTvShows();
+  console.log(tvshows);
 
   return (
     <main className="flex min-h-screen flex-col items-center p-5">
@@ -32,11 +37,11 @@ export default async function movies(){
         TV SHOWS
       </h1>
       <div className="grid grid-cols-3 gap-4 mt-8">
-        {movies.map(movie => (
-          <div key={movie.id} className="bg-gray-200 text-gray-800 p-4 rounded-lg">
-            <h2 className="text-xl font-bold ">{movie.title}</h2>
-            <p>Rating: {movie.rating}</p>
-            <p>Genre: {movie.genre}</p>
+        {tvshows.map(show => (
+          <div key={show.id} className="bg-gray-200 text-gray-800 p-4 rounded-lg">
+            <h2 className="text-xl font-bold ">{show.title}</h2>
+            <p>Rating: {show.rating}</p>
+            <p>Genre: {show.genre}</p>
           </div>
         ))}
       </div>

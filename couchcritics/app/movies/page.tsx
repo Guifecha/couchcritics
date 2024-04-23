@@ -12,10 +12,14 @@ export const dynamic = 'auto',
 
 
 async function getMovies(){
-  const pb = new PocketBase('http://192.168.110.109:8090')
-  const resultList = await pb.collection('movies').getList(1, 50, {
-  });
-  return resultList?.items as any[];
+  try {
+    const pb = new PocketBase('http://127.0.0.1:8090')
+    const resultList = await pb.collection('movies').getList(1, 50, {});
+    return resultList?.items as any[];
+  } catch (error) {
+    console.error('An error occurred while fetching', error);
+    return [];
+  }
 }
 
 // fetch a paginated records list
@@ -29,7 +33,7 @@ export default async function movies(){
     <main className="flex min-h-screen flex-col items-center p-5">
       <Navbar />
       <h1 className="text-6xl font-bold text-center" id="Welcome">
-        TV SHOWS
+        MOVIES
       </h1>
       <div className="grid grid-cols-3 gap-4 mt-8">
         {movies.map(movie => (
