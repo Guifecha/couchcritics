@@ -18,14 +18,18 @@ body {
   overflow: auto;
 }
 
+#main {
+  height: 400vh;
+}
+
 
 .PopularMovies {
   margin-top: 15%;
   width: 100%;
   background-color: var(--color4);
-  border-top-left-radius: 40%;
-  border-top-right-radius: 40%;
-  height: 150vh;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%;
+  height: 200vh;
 }
 
 .PopularMovies h1 {
@@ -37,14 +41,13 @@ body {
 
 
 .PopularShows {
-  margin-top: -20%;
-  /* adjust as needed */
+  margin-top: -25%;
   margin-bottom: 40%;
   width: 100%;
   background-color: var(--color3);
-  border-top-left-radius: 70%;
-  border-top-right-radius: 70%;
-  height: 90vh;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%;
+  height: 200vh;
 }
 
 .PopularShows h1 {

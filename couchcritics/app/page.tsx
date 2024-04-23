@@ -6,7 +6,7 @@ import PopularShows  from "./components/PopularShows";
 export default function Home() {  
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between  ">
+      <main className="flex min-h-screen flex-col items-center justify-between  " id="main">
         <Navbar/>
         <div className="WelcomeDiv ">
           <h1 className="text-6xl font-bold text-center" id="Welcome">
@@ -18,7 +18,6 @@ export default function Home() {
         </div>
         <PopularMovies />
         <PopularShows />
-
       </main>
     </>
   );
