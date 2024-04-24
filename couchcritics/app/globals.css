@@ -5,8 +5,8 @@
 :root {
   --color1: #ffffea;
   --color2: #a795a5;
-  --color3: #7a959e;
-  --color4: #424e5e;
+  --color3: rgb(122, 149, 158);
+  --color4: rgb(65, 77, 93);
   --color5: #3b2b46;
 }
 
@@ -16,6 +16,7 @@ body {
   color: var(--color1);
   margin: none;
   overflow: auto;
+
 }
 
 #main {
@@ -101,6 +102,176 @@ body {
   margin-right: -1.6rem;
   /* adjust as needed */
 }
+
+
+/* movies */
+#movie {
+  position: relative;
+  border-radius: 30px;
+  background-color: var(--color5);
+  font-weight: bold;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 10px;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  color: var(--color1);
+  overflow: hidden;
+  position: relative;
+}
+
+
+#movie:hover {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  outline: solid 2px var(--color4);
+}
+
+
+.movie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+@keyframes saturation {
+  0% {
+    filter: saturate(100%);
+  }
+
+  25% {
+    filter: saturate(150%);
+
+  }
+
+  50% {
+    filter: saturate(200%);
+  }
+
+  75% {
+    filter: saturate(150%);
+  }
+
+  100% {
+    filter: saturate(200%);
+  }
+}
+
+.movie-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+}
+
+.movie-container:hover img {
+  animation: saturation 5s infinite;
+}
+
+#movie p {
+  margin-top: 10px;
+}
+
+.movie-container .hoverInfo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
+  background-color: rgba(65, 77, 93, 0.8);
+  box-shadow: 0 0 3px 0 var(--color3);
+  color: var(--color1);
+  padding: 10px;
+  border-radius: 10%;
+}
+
+.movie-container:hover .hoverInfo {
+  visibility: visible;
+  opacity: 1;
+}
+
+.movie-container:hover .hoverInfo p {
+  opacity: 1;
+}
+
+
+/* shows */
+#show {
+  position: relative;
+  border-radius: 30px;
+  background-color: var(--color5);
+  font-weight: bold;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 10px;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  color: var(--color1);
+  overflow: hidden;
+  position: relative;
+}
+
+#show:hover {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  outline: solid 2px var(--color3);
+}
+
+.show-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.show-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+}
+
+.show-container:hover img {
+  animation: saturation 5s infinite;
+}
+
+#show p {
+  margin-top: 10px;
+}
+
+.show-container .hoverInfo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
+  background-color: rgba(122, 149, 158, 0.8);
+  box-shadow: 0 0 3px 0 var(--color3);
+  color: var(--color1);
+  padding: 10px;
+  border-radius: 10%;
+}
+
+.show-container:hover .hoverInfo {
+  visibility: visible;
+  opacity: 1;
+}
+
+.show-container:hover .hoverInfo p {
+  opacity: 1;
+}
+
+/* nav */
+
+
 
 nav {
   align-items: baseline;
