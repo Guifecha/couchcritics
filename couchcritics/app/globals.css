@@ -71,6 +71,24 @@ body {
   align-items: baseline;
 }
 
+#nav-Movies {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+#nav-Movies:hover {
+  color: var(--color2);
+}
+
+#nav-TvShows {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+#nav-TvShows:hover {
+  color: var(--color2);
+}
+
 #searchBar {
   display: block;
   width: 0;
