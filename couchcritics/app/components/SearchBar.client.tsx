@@ -22,9 +22,13 @@ const SearchBar = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log(`Searching for ${searchTerm}`);
+    console.log(`Searching for "${searchTerm}" ...`);
     getSearch(searchTerm).then((result) => {
-      console.log(result[0].title);
+      if (result.length > 0){
+        console.log(result[0].title);
+      }else{
+        console.log("No results found");
+      }
     });
 
   };
