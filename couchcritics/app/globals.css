@@ -90,19 +90,27 @@ body {
 }
 
 #searchBar {
-  display: block;
-  width: 0;
-  opacity: 30%;
-  transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  border-radius: 10px;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  overflow: hidden;
+  border-radius: 30px;
   background-color: var(--color2);
   color: var(--color1);
-  margin-left: 40px;
+  font-weight: bold;
+  text-align: center;
 }
 
+#searchBar.visible {
+  max-width: 200px;
+  opacity: 50%;
+}
+
+
 #searchBar::placeholder {
-  color: var(--color1);
   text-align: center;
+  color: var(--color1);
+  font-weight: bold;
 }
 
 

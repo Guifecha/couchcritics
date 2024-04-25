@@ -34,32 +34,31 @@ const SearchBar = () => {
   };
 
   return (
-<div style={{ display: 'flex', alignItems: 'center' }}>
-  <input 
-    type="checkbox" 
-    id="searchToggle" 
-    className="hidden" 
-    checked={isSearchVisible}
-    onChange={() => setSearchVisible(!isSearchVisible)}
-  />
-  <label htmlFor="searchToggle">
-    <FontAwesomeIcon icon={faMagnifyingGlass} style={{ width: '1em', height: '1em', marginRight: '23px' }} />
-  </label>
-  {isSearchVisible && (
-    <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
       <input 
-        type="text" 
-        id="searchBar" 
-        placeholder="Search..." 
-        value={searchTerm} 
-        onChange={e => setSearchTerm(e.target.value)} 
-        style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
+        type="checkbox" 
+        id="searchToggle" 
+        className="hidden" 
+        checked={isSearchVisible}
+        onChange={() => setSearchVisible(!isSearchVisible)}
       />
-      <button type="submit"></button>
-    </form>
-  )}
-</div>
+      <label htmlFor="searchToggle">
+        <FontAwesomeIcon icon={faMagnifyingGlass} style={{ width: '1em', height: '1em', marginRight: '23px' }} />
+      </label>
+      <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center' }}>
+        <input 
+          type="text" 
+          id="searchBar" 
+          className={isSearchVisible ? 'visible' : ''}
+          placeholder="Search..." 
+          value={searchTerm} 
+          onChange={e => setSearchTerm(e.target.value)} 
+          style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
+        />
+        <button type="submit"></button>
+      </form>
+    </div>
   );
-};
+}
 
-export default SearchBar;
+export default SearchBar;
