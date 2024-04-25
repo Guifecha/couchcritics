@@ -38,9 +38,14 @@ export default async function tvshows(){
       </h1>
       <div className="grid grid-cols-3 gap-4 mt-8">
         {tvshows.map(show => (
-          <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg">
+          <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg show-container" id='show'>
             <img src={show.image_path} alt={show.title}  style={{ width: '250px', height: '350px' }} />
             <p className="text-bold">{show.title}</p>
+            <div className='hoverInfo' >
+              <p>Genre: {show.genre}</p>
+              <p>Rating: {show.rating}</p>
+              <p>Year: {show.release}</p>
+          </div>
           </div>
         ))}
       </div>
