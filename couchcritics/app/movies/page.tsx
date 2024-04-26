@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 
 import PocketBase from 'pocketbase';
+import Link from 'next/link';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -30,7 +31,7 @@ export default async function movies(){
   console.log(movies);
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-5">
+    <main className="flex min-h-screen flex-col items-center ">
       <Navbar />
       <h1 className="text-6xl font-bold text-center" id="Welcome">
         MOVIES
@@ -44,6 +45,8 @@ export default async function movies(){
             <p>Genre: {movie.genre}</p>
             <p>Rating: {movie.rating}</p>
             <p>Year: {movie.release}</p>
+            <Link href={`/movies/${movie.id}`}>link</Link>
+            
             
           </div>
         </div>

@@ -28,10 +28,9 @@ async function getTvShows(){
 
 export default async function tvshows(){
   const tvshows = await getTvShows();
-  console.log(tvshows);
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-5">
+    <main className="flex min-h-screen flex-col items-center">
       <Navbar />
       <h1 className="text-6xl font-bold text-center" id="Welcome">
         TV SHOWS
