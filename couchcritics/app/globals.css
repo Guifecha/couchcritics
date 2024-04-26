@@ -5,8 +5,8 @@
 :root {
   --color1: #ffffea;
   --color2: #a795a5;
-  --color3: rgb(122, 149, 158);
-  --color4: rgb(65, 77, 93);
+  --color3: #7a959e;
+  --color4: #414d5d;
   --color5: #3b2b46;
 }
 
@@ -308,6 +308,18 @@ body {
 .MovieInfo img {
   border-radius: 30px;
   margin: 1px;
+  animation: saturation 5s infinite alternate;
+  /* Add this line */
+}
+
+@keyframes saturation {
+  0% {
+    filter: saturate(1);
+  }
+
+  100% {
+    filter: saturate(2);
+  }
 }
 
 .MovieInfo h1 {
@@ -333,15 +345,107 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5%;
   margin-bottom: 5%;
-  margin-left: 10%;
 
 }
 
 #description {
   order: -1;
+  background-color: rgba(65, 77, 93, 0.1);
+  padding: 30px;
+  border-radius: 30px;
+  min-height: 150px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  outline: solid 2px var(--color4);
 }
+
+#otherDetails {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 30%;
+  flex-wrap: wrap;
+  /* Add this line */
+}
+
+#otherDetails p {
+  margin-right: 10%;
+  font-weight: bold;
+  margin-left: 20px;
+  /* Add this line */
+}
+
+.tvshowInfo {
+  display: flex;
+  align-items: center;
+  padding-left: 15rem;
+  padding-right: 15rem;
+}
+
+.tvshowInfo img {
+  border-radius: 30px;
+  margin: 1px;
+  animation: saturation 5s infinite alternate;
+  /* Add this line */
+}
+
+
+.tvshowInfo #show {
+  outline: solid 2px var(--color3);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.tvshowInfo #CoverContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 360px;
+}
+
+#tvshowDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+#tvshowDetails h1 {
+  order: -1;
+  font-size: 30px;
+  font-weight: bolder;
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+
+.tvshowDetails #description {
+  background-color: rgba(65, 77, 93, 0.1);
+  padding: 30px;
+  border-radius: 30px;
+  min-height: 150px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  outline: solid 2px var(--color4);
+}
+
+.tvshowDetails #otherDetails {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 30%;
+  flex-wrap: wrap;
+}
+
+
+
+
+
+
 
 
 nav {

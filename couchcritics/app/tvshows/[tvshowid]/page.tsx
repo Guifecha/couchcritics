@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import PocketBase from 'pocketbase';
 import Navbar from '@/app/components/Navbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilm, faCalendar, faStar} from '@fortawesome/free-solid-svg-icons';
+
 
 async function getTvShow(id : string){
   try {
@@ -39,11 +42,20 @@ export default function tvShowDetails ({ params }: { params: { tvshowid: string 
       <main className="flex min-h-screen flex-col items-center ">
         <Navbar />
         <div className='tvshowInfo'>
-        <img src={`../${tvshowDet.image_path}`} alt={tvshowDet.title}  style={{ width: '250px', height: '350px' }} />
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} id='CoverContainer'>
+          <div id='show'>
+            <img src={`../${tvshowDet.image_path}`} alt={tvshowDet.title} style={{ width: '250px', height: '350px' }} />
+          </div>
+        </div>
+        <div id='tvshowDetails'>
           <h1>{tvshowDet.title}</h1>
-          <p>Genre: {tvshowDet.genre}</p>
-          <p>Rating: {tvshowDet.rating}</p>
-          <p>Year: {tvshowDet.release}</p>
+          <div id='description'><p><strong>Description:</strong> {tvshowDet.description}</p></div>
+          <div id='otherDetails'>
+          <p> <FontAwesomeIcon icon={faFilm} style={{ width: '1em', height: '1em', marginRight: '3px', color: "#b32407" }} />: {tvshowDet.genre}</p>
+            <p> <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />: {tvshowDet.rating}</p>
+            <p><FontAwesomeIcon icon={faCalendar} style={{ width: '1em', height: '1em', marginRight: '3px', color: "#7a959e" }} />: {tvshowDet.release}</p>
+          </div>
+        </div>
         </div>
       </main>
     )

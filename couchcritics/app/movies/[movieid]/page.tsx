@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import PocketBase from 'pocketbase';
 import Navbar from '@/app/components/Navbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilm, faCalendar, faStar} from '@fortawesome/free-solid-svg-icons';
 
 async function getMovie(id : string){
   try {
@@ -46,10 +48,12 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
           </div>
         </div>
         <div id='MovieDetails'>
-          <div id='description'><p>Description: {movieDet.description}</p></div>
-          <p>Genre: {movieDet.genre}</p>
-          <p>Rating: {movieDet.rating}</p>
-          <p>Year: {movieDet.release}</p>
+          <div id='description'><p><strong>Description:</strong> {movieDet.description}</p></div>
+          <div id='otherDetails'>
+            <p> <FontAwesomeIcon icon={faFilm} style={{ width: '1em', height: '1em', marginRight: '3px', color: "#b32407" }} />: {movieDet.genre}</p>
+            <p> <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />: {movieDet.rating}</p>
+            <p><FontAwesomeIcon icon={faCalendar} style={{ width: '1em', height: '1em', marginRight: '3px', color: "#7a959e" }} />: {movieDet.release}</p>
+          </div>
         </div>
         </div>
       </main>
