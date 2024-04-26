@@ -295,8 +295,53 @@ body {
   opacity: 1;
 }
 
-/* nav */
+/* indiividual movies page */
+.MovieInfo {
+  display: flex;
+  align-items: center;
+  /* Adjust as needed */
+  padding-left: 15rem;
+  padding-right: 15rem;
+}
 
+
+.MovieInfo img {
+  border-radius: 30px;
+  margin: 1px;
+}
+
+.MovieInfo h1 {
+  font-size: 35px;
+  margin-top: 0%;
+  font-weight: bolder;
+}
+
+.MovieInfo #movie {
+  outline: solid 2px var(--color4);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+#CoverContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 360px;
+}
+
+#MovieDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 10%;
+
+}
+
+#description {
+  order: -1;
+}
 
 
 nav {

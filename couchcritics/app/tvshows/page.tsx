@@ -1,7 +1,9 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 
+
 import PocketBase from 'pocketbase';
+import Link from 'next/link';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -37,6 +39,7 @@ export default async function tvshows(){
       </h1>
       <div className="grid grid-cols-3 gap-4 mt-8">
         {tvshows.map(show => (
+          <Link href={`/tvshows/${show.id}`}>
           <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg show-container" id='show'>
             <img src={show.image_path} alt={show.title}  style={{ width: '250px', height: '350px' }} />
             <p className="text-bold">{show.title}</p>
@@ -46,6 +49,7 @@ export default async function tvshows(){
               <p>Year: {show.release}</p>
           </div>
           </div>
+          </Link>
         ))}
       </div>
     </main>

@@ -38,6 +38,7 @@ export default async function movies(){
       </h1>
       <div className="grid grid-cols-3 gap-4 mt-20">
         {movies.map(movie => (
+          <Link href={`/movies/${movie.id}`}>
           <div key={movie.id} className="bg-black text-white p-1 rounded-lg text-center movie-container" id="movie">
           <img src={movie.image_path} alt={movie.title}  style={{ width: '250px', height: '350px' }} />
           <p>{movie.title}</p>
@@ -45,11 +46,11 @@ export default async function movies(){
             <p>Genre: {movie.genre}</p>
             <p>Rating: {movie.rating}</p>
             <p>Year: {movie.release}</p>
-            <Link href={`/movies/${movie.id}`}>link</Link>
             
             
           </div>
         </div>
+        </Link>
         ))}
       </div>
     </main>

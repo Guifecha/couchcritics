@@ -38,12 +38,19 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
     return (
       <main className="flex min-h-screen flex-col items-center ">
         <Navbar />
-        <div>
+        <div className='MovieInfo'>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} id='CoverContainer'>
           <h1>{movieDet.title}</h1>
+          <div id='movie'>
+            <img src={`../${movieDet.image_path}`} alt={movieDet.title} style={{ width: '250px', height: '350px' }} />
+          </div>
+        </div>
+        <div id='MovieDetails'>
+          <div id='description'><p>Description: {movieDet.description}</p></div>
           <p>Genre: {movieDet.genre}</p>
           <p>Rating: {movieDet.rating}</p>
           <p>Year: {movieDet.release}</p>
-          <img src={`../${movieDet.image_path}`} alt={movieDet.title}  style={{ width: '250px', height: '350px' }} />
+        </div>
         </div>
       </main>
     )
