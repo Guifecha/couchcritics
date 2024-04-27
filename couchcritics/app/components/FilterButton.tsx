@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import PocketBase from 'pocketbase';
-
+import Link from 'next/link';
 
 const FilterButton = () => {
     const [movies, setMovies] = useState([]);
@@ -24,8 +24,26 @@ const FilterButton = () => {
         getFilter(newGenre).then((result) => {
           if (result.length > 0){
             setMovies(result);
-            result.forEach(movie => console.log(movie.title));
-          }});
+            const panel = document.getElementById("moviepanel");
+            panel.innerHTML = '';
+            result.forEach(movie => {
+              console.log(movie.title);
+              const movieDiv = document.createElement('div');
+              const link = document.createElement('a');
+              link.href = `/movies/${movie.id}`;
+              link.innerHTML =  `
+                <div key=${movie.id} class="bg-black text-white p-1 rounded-lg text-center movie-container" id="movie">
+                <img src=${movie.image_path} alt=${movie.title}  style="width: 250px; height: 350px;" />
+                <p>${movie.title}</p>
+                <div class='hoverInfo' >
+                  <p>Genre: ${movie.genre}</p>
+                  <p>Rating: ${movie.rating}</p>
+                  <p>Year: ${movie.release}</p>
+                </div>`;
+              movieDiv.appendChild(link);
+              panel.appendChild(movieDiv);
+          })
+        }});
       };
 
     const genres = ['Action','Adventure','Animation','Comedy','Crime','Drama','Romance']; // Replace this with your array of genres
@@ -42,7 +60,7 @@ return (
     <label htmlFor="filterToggle">
       Filter
     </label>
-    <form style={{ display: 'flex', alignItems: 'center' }}>
+    <form style={{ display: 'flex', alignItems: 'center', color: 'black' }}>
       <select 
         id="genreDropdown" 
         className={isFilterVisible ? 'visible' : ''}
