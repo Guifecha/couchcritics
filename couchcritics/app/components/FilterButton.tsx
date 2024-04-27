@@ -49,7 +49,7 @@ const FilterButton = () => {
     const genres = ['Action','Adventure','Animation','Comedy','Crime','Drama','Romance']; // Replace this with your array of genres
 
 return (
-  <div style={{ display: 'flex', alignItems: 'center' }}>
+  <div  id='filter'>
     <input 
       type="checkbox" 
       id="filterToggle" 

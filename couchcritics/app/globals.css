@@ -7,7 +7,7 @@
   --color2: #a795a5;
   --color3: #7a959e;
   --color4: #414d5d;
-  --color5: #3b2b46;
+  --color5: rgb(59, 43, 70);
 }
 
 
@@ -302,6 +302,7 @@ body {
   /* Adjust as needed */
   padding-left: 15rem;
   padding-right: 15rem;
+  padding-top: 3rem;
 }
 
 
@@ -383,6 +384,7 @@ body {
   align-items: center;
   padding-left: 15rem;
   padding-right: 15rem;
+  padding-top: 3rem;
 }
 
 .tvshowInfo img {
@@ -442,6 +444,44 @@ body {
 }
 
 
+#filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+#filer form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  align-items: center;
+  ;
+}
+
+
+#filter select {
+  font-weight: 900;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  /* Add padding */
+  border-radius: 30px;
+  color: var(--color1);
+  text-align: center;
+  background-color: rgba(59, 43, 70, 0.7);
+  outline: solid 2px var(--color2);
+  cursor: pointer;
+  /* Change cursor to pointer */
+  transition: all 2s ease;
+}
+
+#filter select:hover {
+  background-color: rgba(59, 43, 70, 0.9);
+  /* Add hover effect */
+}
 
 
 
