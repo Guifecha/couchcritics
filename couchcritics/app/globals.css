@@ -498,3 +498,17 @@ nav {
     text-wrap: balance;
   }
 }
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#results-card{
+  background-color: #414d5d;
+  border-radius: 2px;
+  padding:7px;
+  max-height: 90px;
+  max-width: 240px;
+}
