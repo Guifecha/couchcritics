@@ -75,15 +75,16 @@ const SearchBar = () => {
     {results.length > 0 && results[0] !== 'none' && isSearchVisible ? (
       <div>
       {results.map((result, index) => (
+      <Link href={`/movies/${result.id}`}>
       <div className="results-card" id="results-card">
         <div key={index} style={{ display: 'flex', justifyContent: 'space-between'}}>
-            <div>
-              <h3>{result.title}</h3>
-              <Link href={`/movies/${result.id}`}>View</Link>
-            </div>
+          <div>
+            <h3>{result.title}</h3>
+          </div>
           <img src={`../${result.image_path}`} alt={result.title} style={{ width: '55px', height: '75px' }} />
         </div>
       </div>
+    </Link>
       ))}
     </div>
   ) : results[0] === 'none' && isSearchVisible &&(

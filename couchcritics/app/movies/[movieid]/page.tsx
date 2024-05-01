@@ -40,6 +40,7 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
     return (
       <main className="flex min-h-screen flex-col items-center ">
         <Navbar />
+        
         <div className='MovieInfo'>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} id='CoverContainer'>
           <h1>{movieDet.title}</h1>
