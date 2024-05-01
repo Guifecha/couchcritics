@@ -512,3 +512,11 @@ nav {
   max-height: 90px;
   max-width: 240px;
 }
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: #00ff00;
+}

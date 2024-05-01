@@ -4,10 +4,11 @@ import { faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
 import LogoutForm from './logoutForm';
-import { getSession } from '@/actions';
+import { getSession, getSessionData } from '@/actions';
 
-const Navbar = async () => {
-  const session = await getSession();
+const NavbarClient = async () => {
+  const session = await getSessionData();
+  console.log("session:");
   console.log(session);
   return (
     <nav className="flex justify-between w-full p-6 px-60">
@@ -26,4 +27,4 @@ const Navbar = async () => {
   );
 };
 
-export default Navbar;
+export default NavbarClient;
