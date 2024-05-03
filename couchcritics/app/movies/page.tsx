@@ -29,8 +29,6 @@ async function getMovies(){
 
 export default async function movies(){
   const movies = await getMovies();
-  console.log(movies);
-
   return (
     <main className="flex min-h-screen flex-col items-center ">
       <Navbar />

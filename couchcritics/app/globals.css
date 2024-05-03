@@ -7,7 +7,9 @@
   --color2: #a795a5;
   --color3: #7a959e;
   --color4: #414d5d;
-  --color5: rgb(59, 43, 70);
+  --color5: rgb(54, 41, 63);
+  --color6: rgb(40, 45, 53);
+  --color7: rgb(73, 55, 85);
 }
 
 
@@ -346,7 +348,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5%;
 
 }
 
@@ -541,4 +542,46 @@ nav {
 
 .text-green {
   color: #00ff00;
+}
+
+.text-black {
+  color: black;
+}
+
+#reviews {
+  background-color: var(--color6);
+  padding: 20px;
+  border-radius: 30px;
+  min-height: 140px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  outline: solid 2px var(--color4);
+  margin-top: 40px;
+}
+
+#reviewind{
+  background-color: var(--color6);
+  padding: 20px;
+  border-radius: 30px;
+  min-height: 140px;
+  max-width: 700px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  outline: solid 2px var(--color4);;
+}
+
+.small-font {
+  font-size: 0.8em; /* Adjust as needed */
+}
+
+#subreview {
+  position: absolute;
+  z-index: 1; 
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color6);
+  padding: 20px;
+  border-radius: 30px;
+  min-height: 140px;
+  max-width: 300px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  outline: solid 2px var(--color4);
 }

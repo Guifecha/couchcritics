@@ -24,9 +24,72 @@ async function getMovie(id : string){
   }
 }
 
+async function getReviews(id : string){ //media id
+  try {
+    const pb = new PocketBase('http://127.0.0.1:8090')
+    const reviews = await pb.collection('reviews').getList(1, 3, { filter: pb.filter("movie = {:id} ", { id: id}) });
+    console.log(reviews);
+    return reviews;
+  } catch (error) {
+    console.error('An error occurred while fetching', error);
+    return null;
+  }
+}
+
+
+
 export default function movieDetails ({ params }: { params: { movieid: string } }) {
   const [movieDetails, setMovieDetails] = useState(null);
+  const [reviews, setReviews] = useState(null);
   const [session, setSession] = useState<SessionData | null>(null);
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [reload, setReload] = useState(false);
+
+
+  const handleButtonClick = () => {
+    if (buttonClicked == true) {
+      setButtonClicked(false);
+      setShowForm(false);
+    }
+    else{
+      setButtonClicked(true);
+      setShowForm(true);
+    }
+  };
+  
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+    if (!session.isLoggedIn) {
+      return;
+    }
+    
+    const review = event.target.elements.review.value;
+    const rating = event.target.elements.rating.value;
+
+    const submitReview = async () => {
+      const pb = new PocketBase('http://127.0.0.1:8090');
+
+      const data = {
+        "user":  session.userId,
+        "movie": params.movieid,
+        "tvshow": null,
+        "review": review,
+        "rating": rating
+      };
+      console.log(data)
+      const record = await pb.collection('reviews').create(data);  
+
+    };
+    submitReview();
+    console.log("Review submitted");
+
+    setShowForm(false);
+    setButtonClicked(false);
+    setReload(!reload);
+  };
+  
 
   useEffect(() => {
     getSessionData().then(sessionData => {
@@ -35,21 +98,30 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
       setSession(sessionData);
     });
 
-    getMovie(params.movieid).then(movie => {
+    getMovie(params.movieid)
+    .then(movie => {
       if (!movie) {
         return;
       }else{
         setMovieDetails(movie);
       }
+    })
+    .then(movie => {
+      getReviews(params.movieid)
+      .then(reviews => {
+        setReviews(reviews);
+      });
     });
-  }, [params.movieid]);
 
-  console.log(movieDetails);
+  }, [params.movieid, reload]);
+
+  console.log(reviews);
   if (movieDetails === null) {
     return <div>Loading...</div>;
   } else if (movieDetails.items.length === 0) {
     return <div>No Movie Found...</div>;
   }
+
   else{
     const movieDet = movieDetails.items[0];
     return (
@@ -81,10 +153,40 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
             <p> <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />: {movieDet.rating}</p>
             <p><FontAwesomeIcon icon={faCalendar} style={{ width: '1em', height: '1em', marginRight: '3px', color: "#7a959e" }} />: {movieDet.release}</p>
           </div>
-          {session && session.isLoggedIn && <button className=''>Add a review</button>}
-          {session && !session.isLoggedIn && <button className=''>Login to review</button>}
+
+          </div>
+          
         </div>
-        </div>
+        <div id='reviews'>
+            <h1 className='text-center mb-3'>Reviews</h1>
+            {session && session.isLoggedIn && <button onClick={handleButtonClick} className='text-green'>Add a review</button>}
+            {showForm && (
+              <form id="subreview" onSubmit={handleSubmit}>
+                <label>
+                  Review:
+                  <textarea name="review" className='text-black' required />
+                </label>
+                <label>
+                  Rating:
+                  <input type="number" className='text-black' name="rating" min="0" max="10" step="0.1" required />
+                </label>
+                <button type="submit">Submit</button>
+              </form>
+            )}
+            {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login to Review</Link>}
+            <div id="reloadrev">
+            {reviews && reviews.items.length > 0 ? (
+              reviews.items.map((review, index) => (
+                <div id='reviewind' className='mt-5'key={index}>
+                  <p className='small-font mb-2'>Review by: {review.user} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
+                  <p>{review.review}</p>
+                </div>
+              ))
+            ) : (
+              <p>No reviews available.</p>
+            )}
+            </div>
+          </div>
       </main>
     )
   }
