@@ -141,12 +141,12 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
             </nav>
         <div className='MovieInfo'>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} id='CoverContainer'>
-          <h1>{movieDet.title}</h1>
           <div id='movie'>
             <img src={`../${movieDet.image_path}`} alt={movieDet.title} style={{ width: '250px', height: '350px' }} />
           </div>
         </div>
         <div id='MovieDetails'>
+          <h1>{movieDet.title}</h1>
           <div id='description'><p><strong>Description:</strong> {movieDet.description}</p></div>
           <div id='otherDetails'>
             <p> <FontAwesomeIcon icon={faFilm} style={{ width: '1em', height: '1em', marginRight: '3px', color: "#b32407" }} />: {movieDet.genre}</p>

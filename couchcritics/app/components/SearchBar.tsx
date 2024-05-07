@@ -73,18 +73,21 @@ const SearchBar = () => {
       </form>
     </div>
     {results.length > 0 && results[0] !== 'none' && isSearchVisible ? (
-      <div>
+    <div id="results-container">
       {results.map((result, index) => (
+         <div className="result-item"> {/* Change this line */}
       <Link href={`/movies/${result.id}`}>
-      <div className="results-card" id="results-card">
+
+    <div className="results-card" id="results-card">
         <div key={index} style={{ display: 'flex', justifyContent: 'space-between'}}>
           <div>
             <h3>{result.title}</h3>
           </div>
           <img src={`../${result.image_path}`} alt={result.title} style={{ width: '55px', height: '75px' }} />
         </div>
-      </div>
+      </div> 
     </Link>
+    </div>
       ))}
     </div>
   ) : results[0] === 'none' && isSearchVisible &&(

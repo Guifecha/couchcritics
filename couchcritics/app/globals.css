@@ -7,9 +7,7 @@
   --color2: #a795a5;
   --color3: #7a959e;
   --color4: #414d5d;
-  --color5: rgb(54, 41, 63);
-  --color6: rgb(40, 45, 53);
-  --color7: rgb(73, 55, 85);
+  --color5: #36293f;
 }
 
 
@@ -348,7 +346,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 5%;
+}
 
+#MovieDetails h1 {
+  order: -1;
+  font-size: 30px;
+  font-weight: bolder;
+  align-self: flex-start;
+  margin-bottom: 20px;
 }
 
 #description {
@@ -484,11 +490,6 @@ body {
   /* Add hover effect */
 }
 
-
-
-
-
-
 nav {
   align-items: baseline;
 }
@@ -501,21 +502,31 @@ nav {
 }
 
 .search-container {
-  display: flex;
+  display: grid;
   flex-direction: column;
+  grid-template-rows: auto 1fr;
   gap: 10px;
 }
 
-#results-card {
+
+#results-container {
+  position: absolute;
+  margin-top: 5vh;
+  width: 15%;
+}
+
+.results-card {
+  position: relative;
   background-color: #414d5d;
   border-radius: 10px;
   padding: 7px;
-  max-height: 90px;
-  max-width: 240px;
+  height: 100px;
+  /* Add this line */
+  width: 100%;
   font-weight: bold;
   align-items: center;
   transition: all 0.3s ease;
-  /* Add this line */
+  margin-bottom: 5px;
 }
 
 #results-card:hover {
@@ -524,8 +535,6 @@ nav {
 }
 
 #results-card img {
-  width: 100%;
-  height: 100%;
   border-radius: 8px;
   transform: scale(1.05);
   /* Add this line */
@@ -538,14 +547,34 @@ nav {
 
 .text-red {
   color: red;
+  font-weight: bold;
 }
 
 .text-green {
-  color: #00ff00;
+  color: #169916;
+  font-weight: bolder;
+}
+
+.LoginButton {
+  background-color: var(--color2);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  outline: solid 2px var(--color1);
+  width: 100%;
+}
+
+.LoginButton:hover {
+  background-color: var(--color4);
 }
 
 .text-black {
   color: black;
+  font-weight: bold;
 }
 
 #reviews {
@@ -558,23 +587,24 @@ nav {
   margin-top: 40px;
 }
 
-#reviewind{
+#reviewind {
   background-color: var(--color6);
   padding: 20px;
   border-radius: 30px;
   min-height: 140px;
   max-width: 700px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
-  outline: solid 2px var(--color4);;
+  outline: solid 2px var(--color4);
 }
 
 .small-font {
-  font-size: 0.8em; /* Adjust as needed */
+  font-size: 0.8em;
+  /* Adjust as needed */
 }
 
 #subreview {
   position: absolute;
-  z-index: 1; 
+  z-index: 1;
   display: flex;
   flex-direction: column;
   background-color: var(--color6);
@@ -584,4 +614,21 @@ nav {
   max-width: 300px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
   outline: solid 2px var(--color4);
+}
+
+form input[type="text"],
+form input[type="password"] {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: var(--color5);
+}
+
+form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

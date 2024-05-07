@@ -9,7 +9,7 @@ const LoginForm = () => {
             <form  className="text-black" action={formAction}>
             <input type="text" name="username" required placeholder="Username" />
             <input type="password" name="password" required placeholder="Password" />
-            <button className="text-green"type="submit">Login</button>
+            <button className="LoginButton"type="submit">Login</button>
             {state?.error && <p className="text-red" >{state.error}</p>}
             </form>
             </div>
