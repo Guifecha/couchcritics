@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 
 import PocketBase from 'pocketbase';
 import Link from 'next/link';
+import FilterButtonTvshows from '../components/FilterButtonTvshows';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -34,15 +35,18 @@ export default async function tvshows(){
   return (
     <main className="flex min-h-screen flex-col items-center">
       <Navbar />
-      <h1 className="text-6xl font-bold text-center" id="Welcome">
+      <div className='Filterdiv' style={{marginTop: "30px"}}>
+      <h1 className="text-6xl font-bold text-center mb-5" id="Welcome">
         TV SHOWS
       </h1>
-      <div className="grid grid-cols-3 gap-4 mt-8">
+      <FilterButtonTvshows/>
+      </div>
+      <div id="tvshowpanel" className="grid grid-cols-3 gap-4 mt-20">
         {tvshows.map(show => (
           <Link href={`/tvshows/${show.id}`}>
-          <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg show-container" id='show'>
+          <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg movie-container" id='movie'>
             <img src={show.image_path} alt={show.title}  style={{ width: '250px', height: '350px' }} />
-            <p className="text-bold">{show.title}</p>
+            <p>{show.title}</p>
             <div className='hoverInfo' >
               <p>Genre: {show.genre}</p>
               <p>Rating: {show.rating}</p>

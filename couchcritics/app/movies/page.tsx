@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 
 import PocketBase from 'pocketbase';
 import Link from 'next/link';
-import FilterButton from '../components/FilterButton';
+import FilterButtonMovies from '../components/FilterButtonMovies';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -36,7 +36,7 @@ export default async function movies(){
           <h1 className="text-6xl font-bold text-center mb-5" id="Welcome">
             MOVIES
           </h1>
-          <FilterButton />
+          <FilterButtonMovies />
         </div>
       <div id="moviepanel" className="grid grid-cols-3 gap-4 mt-20">
         {movies.map(movie => (
