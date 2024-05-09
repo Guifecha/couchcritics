@@ -7,7 +7,7 @@ const FilterAndOrderMovies = () => {
     const [sortOption, setSortOption] = useState('');
     const [selectedGenre, setSelectedGenre] = useState('');
     const [movies, setMovies] = useState([]);
-    
+
     const getMovies = async () => {
         try {
             const pb = new PocketBase('http://127.0.0.1:8090')
@@ -36,14 +36,18 @@ const FilterAndOrderMovies = () => {
     };
     
     useEffect(() => {
-        console.log(`Filtering by "${selectedGenre}" and ordering by "${sortOption}" ...`);
+    console.log(`Filtering by "${selectedGenre}" and ordering by "${sortOption}" ...`);
     const fetchMovies = selectedGenre ? getFilter : getMovies;
     fetchMovies(selectedGenre).then((fetchedMovies) => {
         let sortedMovies;
-        if (sortOption === 'rating') {
+        if (sortOption === 'highestRating') {
             sortedMovies = fetchedMovies.sort((a, b) => b.rating - a.rating);
-        } else if (sortOption === 'release') {
+        } else if (sortOption === 'lowestRating') {
+            sortedMovies = fetchedMovies.sort((a, b) => a.rating - b.rating);
+        } else if (sortOption === 'newestRelease') {
             sortedMovies = fetchedMovies.sort((a, b) => new Date(b.release) - new Date(a.release));
+        } else if (sortOption === 'earliestRelease') {
+            sortedMovies = fetchedMovies.sort((a, b) => new Date(a.release) - new Date(b.release));
         } else {
             sortedMovies = fetchedMovies;
         }
@@ -84,10 +88,10 @@ const FilterAndOrderMovies = () => {
             
             <form style={{ display: 'flex', alignItems: 'center', color: 'black' }}>
             <select 
-    id="filterDropdown" 
-    className={isFilterVisible ? 'visible' : ''}
-    onChange={e => handleFilterAndOrder(e.target.value, sortOption)}
-    style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
+                    id="filterDropdown" 
+                    className={isFilterVisible ? 'visible' : ''}
+                    onChange={e => handleFilterAndOrder(e.target.value, sortOption)}
+                    style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
 >
                     <option value="">Select Genre...</option>
                     {genres.map((genre) => (
@@ -101,15 +105,17 @@ const FilterAndOrderMovies = () => {
             
             <form style={{ display: 'flex', alignItems: 'center', color: 'black' }}>
             <select 
-    id="sortDropdown" 
-    className={isFilterVisible ? 'visible' : ''}
-    onChange={e => handleFilterAndOrder(selectedGenre, e.target.value)}
-    style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
->
-                    <option value="">Sort By...</option>
-                    <option value="rating">Highest Rating</option>
-                    <option value="release">Release Date</option>
-                </select>
+                id="sortDropdown" 
+                className={isFilterVisible ? 'visible' : ''}
+                onChange={e => handleFilterAndOrder(selectedGenre, e.target.value)}
+                style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
+            >
+                <option value="">Sort By...</option>
+                <option value="highestRating">Highest Rating</option>
+                <option value="lowestRating">Lowest Rating</option>
+                <option value="newestRelease">Newest Release</option>
+                <option value="earliestRelease">Earliest Release</option>
+            </select>
             </form>
 
             

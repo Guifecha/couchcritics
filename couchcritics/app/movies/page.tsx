@@ -3,8 +3,6 @@ import Navbar from '../components/Navbar'
 
 import PocketBase from 'pocketbase';
 import Link from 'next/link';
-import FilterButtonMovies from '../components/FilterButtonMovies';
-import OrderButtonMovies from '../components/OrderButtonMovies';
 import FilterAndOrderMovies from '../components/FilterAndOrderMovies';
 
 export const dynamic = 'auto',
