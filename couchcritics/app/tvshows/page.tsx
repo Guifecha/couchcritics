@@ -1,10 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-
-
 import PocketBase from 'pocketbase';
 import Link from 'next/link';
-import FilterButtonTvshows from '../components/FilterButtonTvshows';
+import FilterAndOrderTvshows from '../components/FilterAndOrderTvshows';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -39,7 +37,7 @@ export default async function tvshows(){
       <h1 className="text-6xl font-bold text-center mb-5" id="Welcome">
         TV SHOWS
       </h1>
-      <FilterButtonTvshows/>
+      <FilterAndOrderTvshows/>
       </div>
       <div id="tvshowpanel" className="grid grid-cols-3 gap-4 mt-20">
         {tvshows.map(show => (
