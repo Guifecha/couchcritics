@@ -27,9 +27,24 @@ async function getMovie(id : string){
 async function getReviews(id : string){ //media id
   try {
     const pb = new PocketBase('http://127.0.0.1:8090')
-    const reviews = await pb.collection('reviews').getList(1, 3, { filter: pb.filter("movie = {:id} ", { id: id}) });
-    console.log(reviews);
-    return reviews;
+    const reviews = await pb.collection('reviews').getList(1, 5, { filter: pb.filter("movie = {:id} ", { id: id}) });
+    const reviewsWithUsers = await Promise.all(reviews.items.map(async review => {
+      const username = await getUser(review.user);
+      review.username = username;
+      return review;
+    }));
+    return reviewsWithUsers;
+  } catch (error) {
+    console.error('An error occurred while fetching', error);
+    return null;
+  }
+}
+
+async function getUser(userid : string){
+  try {
+    const pb = new PocketBase('http://127.0.0.1:8090')
+    const user = await pb.collection('users').getList(1, 1, { filter: pb.filter("id = {:id} ", { id: userid}) });
+    return user.items[0].username;
   } catch (error) {
     console.error('An error occurred while fetching', error);
     return null;
@@ -58,7 +73,7 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
     }
   };
   
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
 
     event.preventDefault();
     if (!session.isLoggedIn) {
@@ -82,7 +97,7 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
       const record = await pb.collection('reviews').create(data);  
 
     };
-    submitReview();
+    await submitReview();
     console.log("Review submitted");
 
     setShowForm(false);
@@ -93,8 +108,6 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
 
   useEffect(() => {
     getSessionData().then(sessionData => {
-      console.log("session:");
-      console.log(sessionData);
       setSession(sessionData);
     });
 
@@ -115,7 +128,6 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
 
   }, [params.movieid, reload]);
 
-  console.log(reviews);
   if (movieDetails === null) {
     return <div>Loading...</div>;
   } else if (movieDetails.items.length === 0) {
@@ -175,10 +187,10 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
             )}
             {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login to Review</Link>}
             <div id="reloadrev">
-            {reviews && reviews.items.length > 0 ? (
-              reviews.items.map((review, index) => (
+            {reviews && reviews.length > 0 ? (
+              reviews.map((review, index) => (
                 <div id='reviewind' className='mt-5'key={index}>
-                  <p className='small-font mb-2'>Review by: {review.user} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
+                  <p className='small-font mb-2'>Review by: {review.username} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
                   <p>{review.review}</p>
                 </div>
               ))

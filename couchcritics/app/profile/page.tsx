@@ -18,7 +18,7 @@ export const dynamic = 'auto',
 async function getReviews(userId : string){ //media id
 try {
     const pb = new PocketBase('http://127.0.0.1:8090')
-    const reviews = await pb.collection('reviews').getList(1, 3, { filter: pb.filter("user = {:userId} ", { userId: userId}) });
+    const reviews = await pb.collection('reviews').getList(1, 5, { filter: pb.filter("user = {:userId} ", { userId: userId}) });
     console.log(reviews);
     const reviewsWithNames = await Promise.all(reviews.items.map(async review => {
         let name;
@@ -28,7 +28,6 @@ try {
           name = await getTVShow(review.tvshow);
         }
         review.name = name;
-        console.log(review);
         return review;
       }));
     return reviewsWithNames;
@@ -81,7 +80,7 @@ export default async function profile(){
                     Your Reviews
                 {reviews ? (
                     reviews.map((review, index) => (
-                        <div id='reviewind' className='mt-5'key={index}>
+                        <div id='reviewind' className='mt-5' key={index}>
                         <p className='small-font mb-2'>{review.name} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
                         <p>{review.review}</p>
                         </div>
