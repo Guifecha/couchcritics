@@ -5,6 +5,7 @@ import PocketBase from 'pocketbase';
 import Link from 'next/link';
 import FilterButtonMovies from '../components/FilterButtonMovies';
 import OrderButtonMovies from '../components/OrderButtonMovies';
+import FilterAndOrderMovies from '../components/FilterAndOrderMovies';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -36,9 +37,8 @@ export default async function movies(){
       <div className='Filterdiv' style={{marginTop: "30px"}}>
           <h1 className="text-6xl font-bold text-center mb-5" id="Welcome">
             MOVIES
-          </h1>
-          <FilterButtonMovies />
-          <OrderButtonMovies />
+          </h1> 
+          <FilterAndOrderMovies />
         </div>
       <div id="moviepanel" className="grid grid-cols-3 gap-4 mt-20">
         {movies.map(movie => (
