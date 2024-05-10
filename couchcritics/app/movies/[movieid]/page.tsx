@@ -7,6 +7,9 @@ import Link from 'next/link';
 import SearchBar from '@/app/components/SearchBar';
 import { getSessionData } from '@/actions';
 
+
+
+
 type SessionData = {
   isLoggedIn: boolean;
   userId: string | undefined;
@@ -72,7 +75,12 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
       setShowForm(true);
     }
   };
-  
+
+  const handleModalClose = () => {
+    setButtonClicked(false);
+    setShowForm(false);
+  };
+
   const handleSubmit = async (event) => {
 
     event.preventDefault();
@@ -174,20 +182,23 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
           <div className='RevContent'>
             {session && session.isLoggedIn && <button onClick={handleButtonClick} className='text-green'>Add a review</button>}
             {showForm && (
-              <form id="subreview" onSubmit={handleSubmit}>
-                <label>
-                  Review:
-                  <textarea name="review" className='custom-textarea' required />
-                </label>
-                <label>
-                  Rating:
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <input type="number" className='custom-input' name="rating" min="0" max="10" step="0.1" required />
-                    <span style={{marginLeft: '10px'}}>/10</span>
-                  </div>
-                </label>
-                <button type="submit" id="submit">Submit</button>
-              </form>
+            <div className="modal">
+            <form id="subreview" onSubmit={handleSubmit} className="modal-content">
+            <button type="button" className="close-button" onClick={handleModalClose}>X</button>
+              <label>
+                Review:
+                <textarea name="review" className='custom-textarea' required />
+              </label>
+              <label>
+                Rating:
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <input type="number" className='custom-input' name="rating" min="0" max="10" step="0.1" required />
+                  <span style={{marginLeft: '10px'}}>/10</span>
+                </div>
+              </label>
+              <button type="submit" id="submit">Submit</button>
+            </form>
+          </div>
             )}
             {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login to Review</Link>}
             <div id="reloadrev">
