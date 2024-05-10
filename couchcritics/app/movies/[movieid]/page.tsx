@@ -170,19 +170,23 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
           
         </div>
         <div id='reviews'>
-            <h1 className='text-center mb-3'>Reviews</h1>
+            <h1>Reviews</h1>
+          <div className='RevContent'>
             {session && session.isLoggedIn && <button onClick={handleButtonClick} className='text-green'>Add a review</button>}
             {showForm && (
               <form id="subreview" onSubmit={handleSubmit}>
                 <label>
                   Review:
-                  <textarea name="review" className='text-black' required />
+                  <textarea name="review" className='custom-textarea' required />
                 </label>
                 <label>
                   Rating:
-                  <input type="number" className='text-black' name="rating" min="0" max="10" step="0.1" required />
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <input type="number" className='custom-input' name="rating" min="0" max="10" step="0.1" required />
+                    <span style={{marginLeft: '10px'}}>/10</span>
+                  </div>
                 </label>
-                <button type="submit">Submit</button>
+                <button type="submit" id="submit">Submit</button>
               </form>
             )}
             {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login to Review</Link>}
@@ -198,6 +202,7 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
               <p>No reviews available.</p>
             )}
             </div>
+          </div>
           </div>
       </main>
     )

@@ -69,7 +69,7 @@ const SearchBar = () => {
       <label htmlFor="searchToggle">
         <FontAwesomeIcon icon={faMagnifyingGlass} style={{ width: '1em', height: '1em', marginRight: '23px' }} />
       </label>
-      <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center' }}>
+      <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
         <input 
           type="text" 
           id="searchBar" 

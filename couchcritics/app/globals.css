@@ -513,7 +513,7 @@ nav {
   position: absolute;
   margin-top: 5vh;
   width: 15%;
-  height : 15%;
+  height: 15%;
   z-index: 100;
   border-radius: 10px;
 }
@@ -581,14 +581,37 @@ nav {
 }
 
 #reviews {
-  background-color: var(--color6);
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5%;
+  font-weight: bold;
+}
+
+#reviews h1 {
+  align-self: flex-start;
+  font-size: 25px;
+}
+
+.RevContent {
+  padding-right: 6rem;
+  padding-left: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Add this line */
+  align-items: center;
+  /* Add this line */
+  margin-top: 5%;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgba(65, 77, 93, 0.1);
   border-radius: 30px;
-  min-height: 140px;
+  min-height: 100px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
   outline: solid 2px var(--color4);
-  margin-top: 40px;
 }
+
 
 #reviewind {
   background-color: var(--color6);
@@ -596,9 +619,13 @@ nav {
   border-radius: 30px;
   min-height: 140px;
   min-width: 600px;
-  max-width : 700px;
+  max-width: 700px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
   outline: solid 2px var(--color4);
+}
+
+#reloadrev {
+  padding: 30px;
 }
 
 .small-font {
@@ -636,4 +663,68 @@ form button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.custom-textarea {
+  width: 100%;
+  /* Full width */
+  height: 150px;
+  /* Set height */
+  padding: 12px 20px;
+  /* Padding */
+  box-sizing: border-box;
+  /* Allow padding and border to be included in total width and height */
+  border: 2px solid #ccc;
+  /* Grey border */
+  border-radius: 4px;
+  /* Rounded borders */
+  background-color: var(--color1);
+  /* Light grey background */
+  resize: none;
+  /* Disable resize */
+  color: black;
+
+  outline: solid 2px var(--color3);
+}
+
+.custom-input {
+  width: 50px;
+  /* Set width */
+  padding: 5px;
+  /* Padding */
+  box-sizing: border-box;
+  /* Allow padding and border to be included in total width */
+  border: 1px solid #ccc;
+  /* Grey border */
+  border-radius: 4px;
+  /* Rounded borders */
+  background-color: var(--color1);
+  /* Light grey background */
+  color: var(--color5);
+  outline: solid 2px var(--color3);
+  text-align: center;
+}
+
+
+#submit {
+  width: 100px;
+  /* Set width */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--color2);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  /* Change to block */
+  font-size: 16px;
+  margin: auto;
+  /* Center the button */
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+#submit:hover {
+  background-color: var(--color3);
 }
