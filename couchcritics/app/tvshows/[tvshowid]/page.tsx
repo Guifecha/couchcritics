@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PocketBase from 'pocketbase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilm, faCalendar, faStar, faUser} from '@fortawesome/free-solid-svg-icons';
+import { faFilm, faCalendar, faStar, faUser, faXmark} from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import SearchBar from '@/app/components/SearchBar';
 import { getSessionData } from '@/actions';
@@ -58,6 +58,7 @@ export default function TvShowDetails ({ params }: { params: { tvshowid: string 
   const [buttonClicked, setButtonClicked] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [reload, setReload] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleButtonClick = () => {
     if (buttonClicked == true) {
@@ -68,6 +69,11 @@ export default function TvShowDetails ({ params }: { params: { tvshowid: string 
       setButtonClicked(true);
       setShowForm(true);
     }
+  };
+
+  const handleModalClose = () => {
+    setButtonClicked(false);
+    setShowForm(false);
   };
   
   const handleSubmit = async (event) => {
@@ -96,6 +102,8 @@ export default function TvShowDetails ({ params }: { params: { tvshowid: string 
     await submitReview();
     console.log("Review submitted");
 
+    setShowSuccess(true); // Add this line
+    setTimeout(() => setShowSuccess(false), 2000); // hide after 3 seconds
     setShowForm(false);
     setButtonClicked(false);
     setReload(!reload);
@@ -165,20 +173,32 @@ export default function TvShowDetails ({ params }: { params: { tvshowid: string 
           
         </div>
         <div id='reviews'>
-            <h1 className='text-center mb-3'>Reviews</h1>
-            {session && session.isLoggedIn && <button onClick={handleButtonClick} className='text-green'>Add a review</button>}
+            <h1>Reviews</h1>
+          <div className='RevContent'>
+            {session && session.isLoggedIn && <button onClick={handleButtonClick} className='AddReview'>Add review</button>}
             {showForm && (
-              <form id="subreview" onSubmit={handleSubmit}>
-                <label>
-                  Review:
-                  <textarea name="review" className='text-black' required />
-                </label>
-                <label>
-                  Rating:
-                  <input type="number" className='text-black' name="rating" min="0" max="10" step="0.1" required />
-                </label>
-                <button type="submit">Submit</button>
-              </form>
+            <div className="modal">
+            <form id="subreview" onSubmit={handleSubmit} className="modal-content">
+            <button type="button" className="close-button" onClick={handleModalClose}><FontAwesomeIcon icon={faXmark} style={{ width: '1em', height: '1em' }} /></button>
+              <label>
+                Review:
+                <textarea name="review" className='custom-textarea' required />
+              </label>
+              <label>
+                Rating:
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <input type="number" className='custom-input' name="rating" min="0" max="10" step="0.1" required />
+                  <span style={{marginLeft: '10px'}}>/10</span>
+                </div>
+              </label>
+              <button type="submit" id="submit">Submit</button>
+            </form>
+          </div>
+            )}
+            {showSuccess && (
+              <div className="success-message">
+                Review submitted successfully!
+              </div>
             )}
             {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login to Review</Link>}
             <div id="reloadrev">
@@ -193,6 +213,7 @@ export default function TvShowDetails ({ params }: { params: { tvshowid: string 
               <p>No reviews available.</p>
             )}
             </div>
+          </div>
           </div>
       </main>
     )

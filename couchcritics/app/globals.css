@@ -633,6 +633,24 @@ nav {
   /* Adjust as needed */
 }
 
+.AddReview {
+  background-color: var(--color4);
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  outline: solid 2px var(--color1);
+}
+
+.AddReview:hover {
+  background-color: var(--color3);
+  outline: solid 2px var(--color5);
+  color: var(--color1);
+}
+
 #subreview {
   position: absolute;
   z-index: 100;
@@ -739,6 +757,7 @@ form button {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .modal-content {
@@ -758,4 +777,20 @@ form button {
   font-size: 20px;
   cursor: pointer;
   color: var(--color1);
+}
+
+.close-button:hover {
+  color: var(--color2);
+}
+
+.success-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color1);
+  color: var(--color5);
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
 }

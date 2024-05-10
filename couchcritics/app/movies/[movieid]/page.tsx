@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PocketBase from 'pocketbase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilm, faCalendar, faStar, faUser} from '@fortawesome/free-solid-svg-icons';
+import { faFilm, faCalendar, faStar, faUser, faXmark} from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import SearchBar from '@/app/components/SearchBar';
 import { getSessionData } from '@/actions';
@@ -63,6 +63,7 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
   const [buttonClicked, setButtonClicked] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [reload, setReload] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
 
   const handleButtonClick = () => {
@@ -82,7 +83,6 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
   };
 
   const handleSubmit = async (event) => {
-
     event.preventDefault();
     if (!session.isLoggedIn) {
       return;
@@ -90,10 +90,10 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
     
     const review = event.target.elements.review.value;
     const rating = event.target.elements.rating.value;
-
+  
     const submitReview = async () => {
       const pb = new PocketBase('http://127.0.0.1:8090');
-
+  
       const data = {
         "user":  session.userId,
         "movie": params.movieid,
@@ -103,11 +103,12 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
       };
       console.log(data)
       const record = await pb.collection('reviews').create(data);  
-
     };
     await submitReview();
     console.log("Review submitted");
-
+  
+    setShowSuccess(true); // Add this line
+    setTimeout(() => setShowSuccess(false), 2000); // hide after 3 seconds
     setShowForm(false);
     setButtonClicked(false);
     setReload(!reload);
@@ -180,13 +181,13 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
         <div id='reviews'>
             <h1>Reviews</h1>
           <div className='RevContent'>
-            {session && session.isLoggedIn && <button onClick={handleButtonClick} className='text-green'>Add a review</button>}
+            {session && session.isLoggedIn && <button onClick={handleButtonClick} className='AddReview'>Add review</button>}
             {showForm && (
             <div className="modal">
             <form id="subreview" onSubmit={handleSubmit} className="modal-content">
-            <button type="button" className="close-button" onClick={handleModalClose}>X</button>
+            <button type="button" className="close-button" onClick={handleModalClose}><FontAwesomeIcon icon={faXmark} style={{ width: '1em', height: '1em' }} /></button>
               <label>
-                Review:
+               Review:
                 <textarea name="review" className='custom-textarea' required />
               </label>
               <label>
@@ -199,6 +200,11 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
               <button type="submit" id="submit">Submit</button>
             </form>
           </div>
+            )}
+            {showSuccess && (
+              <div className="success-message">
+                Review submitted successfully!
+              </div>
             )}
             {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login to Review</Link>}
             <div id="reloadrev">
