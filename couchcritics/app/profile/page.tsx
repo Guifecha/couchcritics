@@ -83,11 +83,9 @@ export default async function profile(){
                         <div id='reviewind' className='mt-5' key={index}>
                         <div id="revheader" className='small-font mb-2'>
                           <p>{review.name} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
-                          <p>{review.created.slice(0, 10)}</p>
+                          <p>{new Date(review.created).toLocaleDateString()}</p>
                         </div>
                         <p>{review.review}</p>
-                        <br/>
-                        <p>{new Date(review.created).toLocaleDateString()}</p>
                         </div>
                     ))
                     ) : (

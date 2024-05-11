@@ -150,14 +150,15 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
             <nav className="flex justify-between w-full p-6 px-60">
               <Link href="/"><h1 className="text-2xl font-bold">Couch Critics</h1></Link>
               <div className="flex space-x-20 items-baseline" >
-                {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login</Link>}
-                {session && session.isLoggedIn && <Link href="/" className='text-red'></Link>}
                 <Link href="/movies" id='nav-Movies'>Movies</Link>
                 <Link href="/tvshows" id='nav-TvShows'>TV Shows</Link>
+                <div className="flex space-x-2 items-center">
                 <SearchBar />
                 <Link href="/profile">
-                  <FontAwesomeIcon icon={faUser} style={{ width: '1em', height: '1em'}} />
+                  <FontAwesomeIcon icon={faUser} style={{ width: '1em', height: '1em', marginBottom: '5px'}} />
                 </Link>
+                </div>
+                {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login</Link>}
               </div>
             </nav>
         <div className='MovieInfo'>
@@ -213,11 +214,9 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
                 <div id='reviewind' className='mt-2 mb-6'key={index}>
                   <div id="revheader" className='small-font mb-2'>
                     <p>Review by: {review.username} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
-                    <p>{review.created.slice(0, 10)}</p>
+                    <p>{new Date(review.created).toLocaleDateString()}</p>
                   </div>
                   <p>{review.review}</p>
-                  <br/>
-                  <p>{new Date(review.created).toLocaleDateString()}</p>
                 </div>
               ))
             ) : (

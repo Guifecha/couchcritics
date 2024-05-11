@@ -15,12 +15,12 @@ const Navbar = async () => {
       <div className="flex space-x-20 items-baseline" >
         <Link href="/movies" id='nav-Movies'>Movies</Link>
         <Link href="/tvshows" id='nav-TvShows'>TV Shows</Link>
-        <div className="flex space-x-2 items-center"> {/* Add this line */}
+        <div className="flex space-x-2 items-center">
         <SearchBar />
         <Link href="/profile">
           <FontAwesomeIcon icon={faUser} style={{ width: '1em', height: '1em', marginBottom: '5px'}} />
         </Link>
-      </div> {/* Add this line */}  
+      </div>
         {!session.isLoggedIn && <Link href ="/login" className='text-green'>Login</Link>}
         {session.isLoggedIn && <LogoutForm/>}
       </div>
