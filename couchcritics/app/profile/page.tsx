@@ -76,12 +76,15 @@ export default async function profile(){
             <Navbar />
             <div className="flex flex-col items-center">
                 <h1 className='text-4xl mt-10'>Welcome to your profile, <b>{session.username}</b></h1>
-                <div id="reviews">
-                    Your Reviews
+                <div id="reviews" className='mt-10'>
+                  <h1>Your Reviews</h1>
                 {reviews ? (
                     reviews.map((review, index) => (
                         <div id='reviewind' className='mt-5' key={index}>
-                        <p className='small-font mb-2'>{review.name} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
+                        <div id="revheader" className='small-font mb-2'>
+                          <p>{review.name} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
+                          <p>{review.created.slice(0, 10)}</p>
+                        </div>
                         <p>{review.review}</p>
                         </div>
                     ))

@@ -69,7 +69,7 @@ const SearchBar = () => {
       <label htmlFor="searchToggle">
         <FontAwesomeIcon icon={faMagnifyingGlass} style={{ width: '1em', height: '1em', marginRight: '23px' }} />
       </label>
-      <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+      <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center'}}>
         <input 
           type="text" 
           id="searchBar" 
@@ -86,9 +86,8 @@ const SearchBar = () => {
     <div id="results-container">
       {results.map((result, index) => (
          <div className="result-item"> {/* Change this line */}
-      <Link href={`/movies/${result.id}`}>
-
-    <div className="results-card" id="results-card">
+      <Link href={`/${result.collectionName === 'movies' ? 'movies' : 'tvshows'}/${result.id}`}>
+      <div className="results-card" id="results-card">
         <div key={index} style={{ display: 'flex', justifyContent: 'space-between'}}>
           <div>
             <h3>{result.title}</h3>

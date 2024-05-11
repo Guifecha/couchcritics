@@ -200,14 +200,17 @@ export default function TvShowDetails ({ params }: { params: { tvshowid: string 
                 Review submitted successfully!
               </div>
             )}
-            {session && !session.isLoggedIn && <Link href ="/login" className='text-green'>Login to Review</Link>}
+            {session && !session.isLoggedIn && <Link href ="/login" className='text-green mt-5'>Login to Review</Link>}
             <div id="reloadrev">
             {reviews && reviews.length > 0 ? (
               reviews.map((review, index) => (
-                <div id='reviewind' className='mt-5'key={index}>
-                  <p className='small-font mb-2'>Review by: {review.username} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
-                  <p>{review.review}</p>
+                <div id='reviewind' className='mt-2 mb-6'key={index}>
+                <div id="revheader" className='small-font mb-2'>
+                  <p>Review by: {review.username} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
+                  <p>{review.created.slice(0, 10)}</p>
                 </div>
+                <p>{review.review}</p>
+              </div>
               ))
             ) : (
               <p>No reviews available.</p>

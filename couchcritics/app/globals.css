@@ -588,9 +588,17 @@ nav {
   font-weight: bold;
 }
 
+
 #reviews h1 {
-  align-self: flex-start;
+  text-align: center;
   font-size: 25px;
+}
+
+#revheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .RevContent {
@@ -618,8 +626,7 @@ nav {
   padding: 20px;
   border-radius: 30px;
   min-height: 140px;
-  min-width: 600px;
-  max-width: 700px;
+  width : 700px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
   outline: solid 2px var(--color4);
 }
