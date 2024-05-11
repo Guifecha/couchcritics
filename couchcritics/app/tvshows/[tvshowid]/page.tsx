@@ -207,7 +207,7 @@ export default function TvShowDetails ({ params }: { params: { tvshowid: string 
                 <div id='reviewind' className='mt-2 mb-6'key={index}>
                 <div id="revheader" className='small-font mb-2'>
                   <p>Review by: {review.username} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
-                  <p>{review.created.slice(0, 10)}</p>
+                  <p>{new Date(review.created).toLocaleDateString()}</p>
                 </div>
                 <p>{review.review}</p>
               </div>

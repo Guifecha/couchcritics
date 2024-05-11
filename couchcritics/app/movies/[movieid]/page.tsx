@@ -216,6 +216,8 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
                     <p>{review.created.slice(0, 10)}</p>
                   </div>
                   <p>{review.review}</p>
+                  <br/>
+                  <p>{new Date(review.created).toLocaleDateString()}</p>
                 </div>
               ))
             ) : (
