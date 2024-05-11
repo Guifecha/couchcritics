@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import FilterAndOrderReviewsProfile from '../components/FilterAndOrderReviewsProfile';
 
 import PocketBase from 'pocketbase';
 import { getSession } from '@/actions';
@@ -78,7 +79,9 @@ export default async function profile(){
                 <h1 className='text-4xl mt-10'>Welcome to your profile, <b>{session.username}</b></h1>
                 <div id="reviews" className='mt-10'>
                   <h1>Your Reviews</h1>
-                {reviews ? (
+                  <FilterAndOrderReviewsProfile userId={session.userId}/>
+                <div id="reviewpanel" className="grid grid-cols-1 gap-4 mt-20">
+                {reviews ? (   
                     reviews.map((review, index) => (
                         <div id='reviewind' className='mt-5' key={index}>
                         <div id="revheader" className='small-font mb-2'>
@@ -92,6 +95,7 @@ export default async function profile(){
                     <p>No reviews available.</p>
                     )}
                 </div>
+            </div>
             </div>
         </main>
     );

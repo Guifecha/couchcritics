@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
 import LogoutForm from './logoutForm';
-import { getSession, getSessionData } from '@/actions';
+import { getSessionData } from '@/actions';
 
 const NavbarClient = async () => {
   const session = await getSessionData();
