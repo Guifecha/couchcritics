@@ -6,6 +6,7 @@ import { faFilm, faCalendar, faStar, faUser, faXmark} from '@fortawesome/free-so
 import Link from 'next/link';
 import SearchBar from '@/app/components/SearchBar';
 import { getSessionData } from '@/actions';
+import OrderReviewsMovies from '@/app/components/OrderReviewsMovies';
 
 
 
@@ -182,7 +183,7 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
         <div id='reviews'>
         <h1>Reviews</h1>
           <div className='RevContent'>
-            {session && session.isLoggedIn && <button onClick={handleButtonClick} className='AddReview'>Add review</button>}
+            {session && session.isLoggedIn && <button onClick={handleButtonClick} className='AddReview' style={{marginBottom:'-50px'}}>Add review</button>}
             {showForm && (
             <div className="modal">
             <form id="subreview" onSubmit={handleSubmit} className="modal-content">
@@ -208,21 +209,11 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
               </div>
             )}
             {session && !session.isLoggedIn && <Link href ="/login" className='text-green mt-5'>Login to Review</Link>}
-            <div id="reloadrev">
-            {reviews && reviews.length > 0 ? (
-              reviews.map((review, index) => (
-                <div id='reviewind' className='mt-2 mb-6'key={index}>
-                  <div id="revheader" className='small-font mb-2'>
-                    <p>Review by: {review.username} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
-                    <p>{new Date(review.created).toLocaleDateString()}</p>
-                  </div>
-                  <p>{review.review}</p>
-                </div>
-              ))
-            ) : (
-              <p>No reviews available.</p>
-            )}
-            </div>
+            <div id="reloadrev" className='mt-10'>
+            <OrderReviewsMovies movieId={params.movieid} />
+            <div id="reviewpanel" className="grid grid-cols-1 gap-4 mt-50"></div>
+            {reviews && reviews.length === 0 && <p style={{marginTop:'20px',paddingLeft:'30px'}}>No reviews available.</p>}
+          </div>
           </div>
           </div>
       </main>

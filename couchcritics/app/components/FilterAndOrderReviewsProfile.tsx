@@ -18,9 +18,9 @@ const FilterAndOrderReviewsProfile = ({userId}: {userId: string}) => {
             const reviews = resultList?.items as any[];
             for (let review of reviews) {
                 if (review.movie) {
-                    review.movie = await getMovie(review.movie);
+                    review.movieTitle = await getMovie(review.movie);
                 } else if (review.tvshow) {
-                    review.tvshow = await getTVShow(review.tvshow);
+                    review.tvshowTitle = await getTVShow(review.tvshow);
                 }
             }
             return reviews;
@@ -67,9 +67,9 @@ const FilterAndOrderReviewsProfile = ({userId}: {userId: string}) => {
             const reviews = resultList?.items as any[];
             for (let review of reviews) {
                 if (review.movie) {
-                    review.movie = await getMovie(review.movie);
+                    review.movieTitle = await getMovie(review.movie);
                 } else if (review.tvshow) {
-                    review.tvshow = await getTVShow(review.tvshow);
+                    review.tvshowTitle = await getTVShow(review.tvshow);
                 }
             }
             return reviews;
@@ -106,11 +106,16 @@ const FilterAndOrderReviewsProfile = ({userId}: {userId: string}) => {
             sortedReviews.forEach((review, index) => {
                 const reviewDiv = document.createElement('div');
                 const link = document.createElement('a');
-                link.href = `/reviews/${review.id}`;
+                if (review.movie) {
+                    link.href = `/movies/${review.movie}`;
+                }
+                if (review.tvshow) {
+                    link.href = `/tvshows/${review.tvshow}`;
+                }
                 const ReviewComponent = () => (
                     <div id='reviewind' className='mt-5' key={index}>
                         <div id="revheader" className='small-font mb-2'>
-                            <p>{review.tvshow ? review.tvshow : review.movie} | 
+                            <p>{review.tvshow ? review.tvshowTitle : review.movieTitle} | 
                                 <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />
                                 {review.rating}
                             </p>
