@@ -81,19 +81,6 @@ export default async function profile(){
                   <h1>Your Reviews</h1>
                   <FilterAndOrderReviewsProfile userId={session.userId}/>
                 <div id="reviewpanel" className="grid grid-cols-1 gap-4 mt-20">
-                {reviews ? (   
-                    reviews.map((review, index) => (
-                        <div id='reviewind' className='mt-5' key={index}>
-                        <div id="revheader" className='small-font mb-2'>
-                          <p>{review.name} | <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />{review.rating}</p>
-                          <p>{new Date(review.created).toLocaleDateString()}</p>
-                        </div>
-                        <p>{review.review}</p>
-                        </div>
-                    ))
-                    ) : (
-                    <p>No reviews available.</p>
-                    )}
                 </div>
             </div>
             </div>

@@ -94,7 +94,7 @@ const FilterAndOrderTvShows = () => {
                 onChange={e => handleFilterAndOrder(e.target.value, sortOption)}
                 style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
 >
-                    <option value="">Select Genre...</option>
+                    <option value="">All</option>
                     {genres.map((genre) => (
                     <option key={genre} value={genre}>{genre}</option>
                     ))}

@@ -10,6 +10,7 @@ const FilterAndOrderReviewsProfile = ({userId}: {userId: string}) => {
     const [sortOption, setSortOption] = useState('');
     const [selectedType, setSelectedType] = useState('');
     const [reviews, setReviews] = useState([]);
+    const sortedReviews = reviews;
 
     const getReviews = async () => {
         try {
@@ -58,7 +59,10 @@ const FilterAndOrderReviewsProfile = ({userId}: {userId: string}) => {
         try {
             const pb = new PocketBase('http://127.0.0.1:8090');
             let filter;
-            if (type === 'Movie') {
+            if (type === "") {
+                filter = pb.filter('user = {:userId}', { userId: userId });
+            }
+            else if (type === 'Movie') {
                 filter = pb.filter('movie != "" && user = {:userId}', { userId: userId });
             } else if (type === 'TV Show') {
                 filter = pb.filter('tvshow != "" && user = {:userId}', { userId: userId });
@@ -103,75 +107,85 @@ const FilterAndOrderReviewsProfile = ({userId}: {userId: string}) => {
             setReviews(sortedReviews);
             const panel = document.getElementById("reviewpanel");
             panel.innerHTML = '';
-            sortedReviews.forEach((review, index) => {
-                const reviewDiv = document.createElement('div');
-                const link = document.createElement('a');
-                if (review.movie) {
-                    link.href = `/movies/${review.movie}`;
-                }
-                if (review.tvshow) {
-                    link.href = `/tvshows/${review.tvshow}`;
-                }
-                const ReviewComponent = () => (
-                    <div id='reviewind' className='mt-5' key={index}>
-                        <div id="revheader" className='small-font mb-2'>
-                            <p>{review.tvshow ? review.tvshowTitle : review.movieTitle} | 
-                                <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />
-                                {review.rating}
-                            </p>
-                            <p>{new Date(review.created).toLocaleDateString()}</p>
+            if (sortedReviews.length === 0) {
+                const noReviewsMessage = document.createElement('p');
+                noReviewsMessage.textContent = 'No reviews available.';
+                panel.appendChild(noReviewsMessage);
+            } else {
+                sortedReviews.forEach((review, index) => {
+                    const reviewDiv = document.createElement('div');
+                    const link = document.createElement('a');
+                    if (review.movie) {
+                        link.href = `/movies/${review.movie}`;
+                    }
+                    if (review.tvshow) {
+                        link.href = `/tvshows/${review.tvshow}`;
+                    }
+                    const ReviewComponent = () => (
+                        <div id='reviewind' className='mt-5' key={index}>
+                            <div id="revheader" className='small-font mb-2'>
+                                <p>{review.tvshow ? review.tvshowTitle : review.movieTitle} | 
+                                    <FontAwesomeIcon icon={faStar} style={{ width: '1em', height: '1em', marginRight: '3px', color: '#FFD43B' }} />
+                                    {review.rating}
+                                </p>
+                                <p>{new Date(review.created).toLocaleDateString()}</p>
+                            </div>
+                            <p>{review.review}</p>
                         </div>
-                        <p>{review.review}</p>
-                    </div>
-                );
-                const root = createRoot(reviewDiv);
-                root.render(<ReviewComponent />);
-                link.appendChild(reviewDiv);
-                panel.appendChild(link);
-            });
+                    );
+                    const root = createRoot(reviewDiv);
+                    root.render(<ReviewComponent />);
+                    link.appendChild(reviewDiv);
+                    panel.appendChild(link);
+                });
+            }
         });
     }, [selectedType, sortOption]);
 
     const types = ['Movie', 'TV Show'];
 
-    return (
-        <div id='filter'>
-            <input 
-                type="checkbox" 
-                id="filterToggle" 
-                className="hidden" 
-                checked={isFilterVisible}
-                onChange={() => setFilterVisible(!isFilterVisible)}
-            />
-            <form style={{ display: 'flex', alignItems: 'center', color: 'black' }}>
-                <select 
-                    id="filterDropdown" 
-                    className={isFilterVisible ? 'visible' : ''}
-                    onChange={e => handleFilterAndOrder(e.target.value, sortOption)}
-                    style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
-                >
-                    <option value="">Select Type...</option>
-                    {types.map((type) => (
-                        <option key={type} value={type}>{type}</option>
-                    ))}
-                </select>
-            </form>
-            <form style={{ display: 'flex', alignItems: 'center', color: 'black' }}>
-                <select 
-                    id="sortDropdown" 
-                    className={isFilterVisible ? 'visible' : ''}
-                    onChange={e => handleFilterAndOrder(selectedType, e.target.value)}
-                    style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
-                >
-                    <option value="">Sort By...</option>
-                    <option value="highestRating">Highest Rating</option>
-                    <option value="lowestRating">Lowest Rating</option>
-                    <option value="newestReview">Newest Review</option>
-                    <option value="earliestReview">Earliest Review</option>
-                </select>
-            </form>
-        </div>
-    );
+return (
+    <div id='filter'>
+        {sortedReviews.length > 0 && (
+            <>
+                <input 
+                    type="checkbox" 
+                    id="filterToggle" 
+                    className="hidden" 
+                    checked={isFilterVisible}
+                    onChange={() => setFilterVisible(!isFilterVisible)}
+                />
+                <form style={{ display: 'flex', alignItems: 'center', color: 'black' }}>
+                    <select 
+                        id="filterDropdown" 
+                        className={isFilterVisible ? 'visible' : ''}
+                        onChange={e => handleFilterAndOrder(e.target.value, sortOption)}
+                        style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
+                    >
+                        <option value="">All</option>
+                        {types.map((type) => (
+                            <option key={type} value={type}>{type}</option>
+                        ))}
+                    </select>
+                </form>
+                <form style={{ display: 'flex', alignItems: 'center', color: 'black' }}>
+                    <select 
+                        id="sortDropdown" 
+                        className={isFilterVisible ? 'visible' : ''}
+                        onChange={e => handleFilterAndOrder(selectedType, e.target.value)}
+                        style={{ width: '200px', height: '30px', border: '1px solid black', marginLeft: '10px' }}
+                    >
+                        <option value="">Sort By...</option>
+                        <option value="highestRating">Highest Rating</option>
+                        <option value="lowestRating">Lowest Rating</option>
+                        <option value="newestReview">Newest Review</option>
+                        <option value="earliestReview">Earliest Review</option>
+                    </select>
+                </form>
+            </>
+        )}
+    </div>
+);
 };
 
 export default FilterAndOrderReviewsProfile;
