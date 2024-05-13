@@ -210,7 +210,7 @@ export default function movieDetails ({ params }: { params: { movieid: string } 
             )}
             {session && !session.isLoggedIn && <Link href ="/login" className='text-green mt-5'>Login to Review</Link>}
             <div id="reloadrev" className='mt-10'>
-            <OrderReviewsMovies movieId={params.movieid} />
+            <OrderReviewsMovies movieId={params.movieid} reload={reload}/>
             <div id="reviewpanel" className="grid grid-cols-1 gap-4 mt-50"></div>
             {reviews && reviews.length === 0 && <p style={{marginTop:'20px',paddingLeft:'30px'}}>No reviews available.</p>}
           </div>

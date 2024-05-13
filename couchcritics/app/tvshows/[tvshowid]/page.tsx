@@ -6,7 +6,7 @@ import { faFilm, faCalendar, faStar, faUser, faXmark} from '@fortawesome/free-so
 import Link from 'next/link';
 import SearchBar from '@/app/components/SearchBar';
 import { getSessionData } from '@/actions';
-import OrderReviewsTvshow from '@/app/components/OrderReviewTvshows';
+import OrderReviewsTvshows from '@/app/components/OrderReviewTvshows';
 
 type SessionData = {
   isLoggedIn: boolean;
@@ -204,7 +204,7 @@ export default function TvShowDetails ({ params }: { params: { tvshowid: string 
             )}
             {session && !session.isLoggedIn && <Link href ="/login" className='text-green mt-5'>Login to Review</Link>}
             <div id="reloadrev" className='mt-10'>
-            <OrderReviewsTvshow tvshowId={params.tvshowid} />
+            <OrderReviewsTvshows tvshowId={params.tvshowid} reload={reload}/>
             <div id="reviewpanel" className="grid grid-cols-1 gap-4 mt-50"></div>
             {reviews && reviews.length === 0 && <p style={{marginTop:'20px',paddingLeft:'30px'}}>No reviews available.</p>}
             </div>

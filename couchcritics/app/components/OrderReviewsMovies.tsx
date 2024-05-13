@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { createRoot } from 'react-dom/client';
 
-const OrderReviewsMovies = ({movieId}) => {
+const OrderReviewsMovies = ({movieId, reload}) => {
     const [isFilterVisible, setFilterVisible] = useState(true);
     const [sortOption, setSortOption] = useState('');
     const [reviews, setReviews] = useState([]);
@@ -80,7 +80,7 @@ const OrderReviewsMovies = ({movieId}) => {
                         }
                     }
                 });
-            }, [sortOption]); // re-run the effect when `sortOption` changes
+            }, [sortOption, reload]); // re-run the effect when `sortOption` changes
 
       return (
         <div id='filter'>
