@@ -13,16 +13,19 @@ export const dynamic = 'auto',
   preferredRegion = 'auto'
 
 
-async function getMovies(){
-  try {
-    const pb = new PocketBase('http://127.0.0.1:8090')
-    const resultList = await pb.collection('movies').getList(1, 50, {});
-    return resultList?.items as any[];
-  } catch (error) {
-    console.error('An error occurred while fetching', error);
-    return [];
+  async function getMovies(){
+    try {
+      const pb = new PocketBase('http://127.0.0.1:8090')
+      const resultList = await pb.collection('movies').getList(1, 5, {});
+      console.log(resultList);
+      return resultList?.items as any[];
+    } catch (error) {
+      console.error('An error occurred while fetching', error);
+      return [];
+    }
   }
-}
+
+  
 
 // fetch a paginated records list
 

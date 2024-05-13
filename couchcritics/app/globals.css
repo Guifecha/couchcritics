@@ -25,12 +25,12 @@ body {
 
 
 .PopularMovies {
-  margin-top: 15%;
+  margin-top: 18%;
   width: 100%;
   background-color: var(--color4);
   border-top-left-radius: 30%;
   border-top-right-radius: 30%;
-  height: 200vh;
+  height: 300vh;
 }
 
 .PopularMovies h1 {
@@ -38,6 +38,22 @@ body {
   text-align: left;
   margin-top: 5%;
   /* adjust as needed */
+}
+
+#PopularMovie {
+  position: relative;
+  border-radius: 30px;
+  background-color: var(--color4);
+  font-weight: bold;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 10px;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  color: var(--color1);
+  overflow: hidden;
+  position: relative;
 }
 
 
@@ -55,6 +71,22 @@ body {
   font-size: 40px;
   text-align: left;
   margin-top: 5%;
+}
+
+#PopularShow {
+  position: relative;
+  border-radius: 30px;
+  background-color: var(--color3);
+  font-weight: bold;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 10px;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  color: var(--color1);
+  overflow: hidden;
+  position: relative;
 }
 
 #Description {
@@ -146,6 +178,7 @@ body {
   overflow: hidden;
   position: relative;
 }
+
 
 
 #movie:hover {
@@ -530,6 +563,7 @@ nav {
   align-items: center;
   transition: all 0.3s ease;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 #results-card:hover {
@@ -549,13 +583,30 @@ nav {
 }
 
 .text-red {
-  color: red;
+  color: var(--color1);
   font-weight: bold;
 }
 
+#magglass:hover {
+  color: var(--color2);
+
+}
+
+#userIcon:hover {
+  color: var(--color2);
+}
+
+.text-red:hover {
+  color: var(--color2);
+}
+
 .text-green {
-  color: #169916;
+  color: var(--color1);
   font-weight: bolder;
+}
+
+.text-green:hover {
+  color: var(--color2);
 }
 
 .LoginButton {
@@ -626,7 +677,7 @@ nav {
   padding: 20px;
   border-radius: 30px;
   min-height: 140px;
-  width : 700px;
+  width: 700px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
   outline: solid 2px var(--color4);
 }

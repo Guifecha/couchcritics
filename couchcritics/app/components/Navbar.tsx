@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faUser } from '@fortawesome/free-solid-svg-icons';
+import {faUser, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
 import LogoutForm from './logoutForm';
@@ -18,10 +18,10 @@ const Navbar = async () => {
         <div className="flex space-x-2 items-center">
         <SearchBar />
         <Link href="/profile">
-          <FontAwesomeIcon icon={faUser} style={{ width: '1em', height: '1em', marginBottom: '5px'}} />
+          <FontAwesomeIcon icon={faUser} style={{ width: '1em', height: '1em', marginBottom: '5px'}} id='userIcon' />
         </Link>
       </div>
-        {!session.isLoggedIn && <Link href ="/login" className='text-green'>Login</Link>}
+        {!session.isLoggedIn && <Link href ="/login" className='text-green'>Login <FontAwesomeIcon icon={faRightToBracket} style={{ width: '1em', height: '1em', marginRight: '23px' }} /></Link>}
         {session.isLoggedIn && <LogoutForm/>}
       </div>
     </nav>

@@ -1,6 +1,8 @@
 "use client"
 import { login } from "@/actions";
 import { useFormState } from "react-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 const LoginForm = () => {
     const [state, formAction] = useFormState<any,FormData>(login, undefined)

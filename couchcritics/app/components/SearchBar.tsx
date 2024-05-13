@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import PocketBase from 'pocketbase';
 import { useEffect } from 'react';
 import Link from 'next/link';
@@ -67,9 +67,9 @@ const SearchBar = () => {
         onChange={() => setSearchVisible(!isSearchVisible)}
       />
       <label htmlFor="searchToggle">
-        <FontAwesomeIcon icon={faMagnifyingGlass} style={{ width: '1em', height: '1em', marginRight: '23px' }} />
+        <FontAwesomeIcon icon={faMagnifyingGlass} style={{ width: '1em', height: '1em', marginRight: '23px' }} id='magglass' />
       </label>
-      <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center'}}>
+      <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center', marginTop: '10px'}}>
         <input 
           type="text" 
           id="searchBar" 
