@@ -114,7 +114,7 @@ const FilterAndOrderMovies = () => {
                 <option value="highestRating">Highest Rating</option>
                 <option value="lowestRating">Lowest Rating</option>
                 <option value="newestRelease">Newest Release</option>
-                <option value="earliestRelease">Earliest Release</option>
+                <option value="earliestRelease">Oldest Release</option>
             </select>
             </form>
 

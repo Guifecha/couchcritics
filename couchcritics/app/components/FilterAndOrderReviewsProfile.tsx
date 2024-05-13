@@ -179,7 +179,7 @@ return (
                         <option value="highestRating">Highest Rating</option>
                         <option value="lowestRating">Lowest Rating</option>
                         <option value="newestReview">Newest Review</option>
-                        <option value="earliestReview">Earliest Review</option>
+                        <option value="earliestReview">Oldest Review</option>
                     </select>
                 </form>
             </>
