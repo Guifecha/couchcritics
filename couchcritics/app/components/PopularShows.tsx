@@ -19,11 +19,12 @@ export default async function tvshows(){
   const tvshows = await getTvShows();
 
   return (
-    <div className='PopularShows p-20 px-60'>
+    <div className='PopularShows pt-20 pl-60 pr-60'>
     <h1 className='font-bold' id='PopularShows'>Popular Shows</h1>
     <main className="flex min-h-screen flex-row" style={{marginTop: "5%"}}>
       <div id="tvshowpanel" className="flex flex-wrap justify-start">
         {tvshows.map(show => (
+          <div>
           <Link href={`/tvshows/${show.id}`}>
           <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg movie-container" id='PopularShow'>
             <img src={show.image_path} alt={show.title}  style={{ width: '200px', height: '300px' }} />
@@ -35,6 +36,7 @@ export default async function tvshows(){
           </div>
           </div>
           </Link>
+          </div>
         ))}
       </div>
     </main>

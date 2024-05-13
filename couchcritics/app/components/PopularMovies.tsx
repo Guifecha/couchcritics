@@ -19,7 +19,7 @@ async function getMovies(){
 export default async function movies(){
   const movies = await getMovies();
   return (
-    <div className='PopularMovies p-20 px-60'>
+    <div className='PopularMovies p-20 px-60 pb-20'>
     <h1 className='font-bold' id='PopularMovies'>Popular Movies</h1>
     <main className="flex min-h-screen flex-row" style={{marginTop: "5%"}}>
       <div className="flex flex-wrap justify-start">

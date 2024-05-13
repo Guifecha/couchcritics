@@ -65,17 +65,6 @@ async function getTVShow(tvshowid : string){
     }
 
 
-    async function getUser(userid : string){
-      try {
-        const pb = new PocketBase('http://127.0.0.1:8090')
-        const user = await pb.collection('users').getList(1, 1, { filter: pb.filter("id = {:id} ", { id: userid}) });
-        return user.items[0];
-      } catch (error) {
-        console.error('An error occurred while fetching', error);
-        return null;
-      }
-    }
-
 // profile return function
 export default async function profile(){
     const session = await getSession();
@@ -83,27 +72,19 @@ export default async function profile(){
         redirect("/login");
     }
 
-    console.log(session);
-
     const reviews = await getReviews(session.userId);
-    const user = await getUser(session.userId);
-    console.log("USER",user);
-    const date = new Date(user.created).toLocaleDateString();
+    
     return (
-      <main className="flex min-h-screen flex-col items-center">
-      <Navbar />
-      <div className="flex flex-col items-center">
-          <h1 className='text-4xl mt-10'>Welcome to your profile, <b>{session.username}</b></h1>
-          <div id="reviews" className='mt-10 flex'>
-              <div id='profile-info'>
-                  <h2>Favorite Genre: <strong>{user.favgenre}</strong></h2>
-                  <h2>Birthday date: <strong>{user.birthday}</strong></h2>
-                  <h2>Joined us in: <strong>{date}</strong></h2>
-                  <h2> Description: <strong>{user.description}</strong></h2>
-              </div>
-              <Link href="/reviews" id='MyReviews'>My Reviews</Link>
-          </div>
-      </div>
-  </main>
+        <main className="flex min-h-screen flex-col items-center">
+            <Navbar />
+            <div className="flex flex-col items-center">
+                <div id="reviews" className='mt-10'>
+                  <h1>Your Reviews</h1>
+                  <FilterAndOrderReviewsProfile userId={session.userId}/>
+                <div id="reviewpanel" className="grid grid-cols-1 gap-4 mt-20">
+                </div>
+            </div>
+            </div>
+        </main>
     );
 }

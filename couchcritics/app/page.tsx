@@ -6,9 +6,9 @@ import PopularShows  from "./components/PopularShows";
 export default function Home() {  
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between  " id="main">
+    <main id="main" className="flex flex-col items-center justify-between" id="main">
         <Navbar/>
-        <div className="WelcomeDiv ">
+        <div className="WelcomeDiv">
           <h1 className="text-6xl font-bold text-center" id="Welcome">
             Welcome to Couch Critics
           </h1>

@@ -26,16 +26,16 @@ const OrderReviewsMovies = ({movieId, reload}) => {
         }
       }
 
-      async function getUser(userid : string){
-        try {
-          const pb = new PocketBase('http://127.0.0.1:8090')
-          const user = await pb.collection('users').getList(1, 1, { filter: pb.filter("id = {:id} ", { id: userid}) });
-          return user.items[0].username;
-        } catch (error) {
-          console.error('An error occurred while fetching', error);
-          return null;
+        async function getUser(userid : string){
+            try {
+            const pb = new PocketBase('http://127.0.0.1:8090')
+            const user = await pb.collection('users').getList(1, 1, { filter: pb.filter("id = {:id} ", { id: userid}) });
+            return user.items[0].username;
+            } catch (error) {
+            console.error('An error occurred while fetching', error);
+            return null;
+            }
         }
-      }
       useEffect(() => {
         getReviews(movieId).then((fetchedReviews) => {
                     if (fetchedReviews) {

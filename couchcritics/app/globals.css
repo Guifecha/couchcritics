@@ -19,8 +19,12 @@ body {
 
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 #main {
-  height: 400vh;
+  height: 100vh;
 }
 
 
@@ -58,13 +62,13 @@ body {
 
 
 .PopularShows {
-  margin-top: -25%;
+  margin-top: -15%;
   margin-bottom: 40%;
   width: 100%;
   background-color: var(--color3);
   border-top-left-radius: 30%;
   border-top-right-radius: 30%;
-  height: 200vh;
+  height: 150vh;
 }
 
 .PopularShows h1 {
@@ -851,4 +855,39 @@ form button {
   padding: 15px;
   border-radius: 5px;
   z-index: 1000;
+}
+
+#profile-info {
+  width: 600px;
+  height: 300px;
+  margin: 20px;
+  background-color: var(--color5);
+  padding: 20px;
+  border-radius: 10px;
+  outline: solid 2px var(--color2);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+#profile-info h2 {
+  color: var(--color1);
+  font-size: 20px;
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+
+strong {
+  color: var(--color1);
+  font-size: 20px;
+}
+
+#reviews {
+  justify-content: space-between;
+}
+
+#MyReviews {
+  font-size: 20px;
+}
+
+#MyReviews:hover {
+  color: var(--color2);
 }
