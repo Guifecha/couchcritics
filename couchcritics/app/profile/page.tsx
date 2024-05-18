@@ -89,11 +89,11 @@ export default async function profile(){
     const user = await getUser(session.userId);
     console.log("USER",user);
     const date = new Date(user.created).toLocaleDateString();
+    const bday = new Date(user.birthday).toLocaleDateString();
     return (
       <main className="flex min-h-screen flex-col items-center">
       <Navbar />
       <div className="flex flex-col items-center">
-          <h1 className='text-4xl mt-10'>Welcome to your profile, <b>{session.username}</b></h1>
           <div id="reviews" className='mt-10 flex'>
               <div id='profile-info'>
               <div id='topinfo'>
@@ -103,17 +103,19 @@ export default async function profile(){
               </div>
               <div className='title'>
               <Link href="/"><h1 className="text-2xl font-bold">Couch Critics</h1></Link>
+              <h2>Profile</h2>
               </div>
+              </div>
+              <div className='rev'>
+                <Link href="/reviews" id='MyReviews'>My Reviews</Link>
               </div>
               <div className='Info'>
                   <h2><FontAwesomeIcon icon={faFilm} id='genre' style={{ width: '1em', height: '1em', marginRight: '3px', color: '#66c1df'  }} />Favorite Genre: <strong>{user.favgenre}</strong></h2>
-                  <h2><FontAwesomeIcon icon={faCakeCandles} id='bday' style={{ width: '1em', height: '1em', marginRight: '3px',   }} />Birthday date: <strong>{user.birthday}</strong></h2>
-                  <h2><FontAwesomeIcon icon={faHandshake} id='joined' style={{ width: '1em', height: '1em', marginRight: '3px',   }} />Joined us in: <strong>{date}</strong></h2>
+                  <h2><FontAwesomeIcon icon={faCakeCandles} id='bday' style={{ width: '1em', height: '1em', marginRight: '3px',   }} />Birthday: <strong>{bday}</strong></h2>
                   <h2><FontAwesomeIcon icon={faAddressCard} id='desc' style={{ width: '1em', height: '1em', marginRight: '3px',   }} /> Description: <strong>{user.description}</strong></h2>
+                  <h2><FontAwesomeIcon icon={faHandshake} id='joined' style={{ width: '1em', height: '1em', marginRight: '3px',   }} />Joined in: <strong>{date}</strong></h2>
               </div>
-              
               </div>
-              <Link href="/reviews" id='MyReviews'>My Reviews</Link>
               
           </div>
       </div>

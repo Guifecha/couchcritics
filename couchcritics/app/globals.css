@@ -877,8 +877,8 @@ form button {
 
 #profile-info {
   width: 700px;
-  height: 400px;
-  margin: 20px;
+  height: 520px;
+  margin: 8px;
   background-color: var(--color5);
   padding: 20px;
   border-radius: 10px;
@@ -958,8 +958,14 @@ strong {
   text-align: center;
 }
 
+.rev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 #MyReviews:hover {
   background-color: var(--color2);
-  font-size: 25px;
-  padding: 5px;
+  font-size: 20px;
 }
