@@ -13,7 +13,7 @@ export default function Home() {
             Welcome to Couch Critics
           </h1>
           <p className="text-xl text-center my-1" id="Description">
-            The best place to find the latest movie reviews
+            The best place to find the latest movies and tv shows reviews
           </p>
         </div>
         <PopularMovies />

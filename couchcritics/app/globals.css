@@ -785,6 +785,16 @@ form button {
   text-align: center;
 }
 
+.custom-input::-webkit-inner-spin-button,
+.custom-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-input {
+  -moz-appearance: textfield;
+}
+
 
 #submit {
   width: 100px;
@@ -792,11 +802,13 @@ form button {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
-  background-color: var(--color2);
+  background-color: var(--color5);
+  outline: solid 2px var(--color3);
   color: white;
   text-align: center;
   text-decoration: none;
   display: block;
+  text-align: center;
   /* Change to block */
   font-size: 16px;
   margin: auto;
@@ -807,6 +819,7 @@ form button {
 
 #submit:hover {
   background-color: var(--color3);
+  font-size: 20px;
 }
 
 .modal {
@@ -857,15 +870,21 @@ form button {
   z-index: 1000;
 }
 
+#topinfo {
+  display: flex;
+  justify-content: space-between;
+}
+
 #profile-info {
-  width: 600px;
-  height: 300px;
+  width: 700px;
+  height: 400px;
   margin: 20px;
   background-color: var(--color5);
   padding: 20px;
   border-radius: 10px;
-  outline: solid 2px var(--color2);
+  outline: solid 5px var(--color2);
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  justify-content: space-between;
 }
 
 #profile-info h2 {
@@ -873,6 +892,52 @@ form button {
   font-size: 20px;
   margin-bottom: 50px;
   font-weight: 500;
+}
+
+.ImgContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  text-align: center;
+}
+
+#profileIMG {
+  height: 90px;
+}
+
+.Info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px;
+  margin-top: 30px;
+  outline: solid 2px var(--color2);
+  border-radius: 15px;
+}
+
+.title {
+  text-align: right;
+}
+
+.Info h2 {
+  width: 45%;
+}
+
+#genre {
+  color: #66c1df;
+}
+
+#bday {
+  color: rgb(224, 224, 73);
+}
+
+#desc {
+  color: rgb(194, 190, 181);
+}
+
+#joined {
+  color: #f1c27d;
 }
 
 strong {
@@ -886,8 +951,15 @@ strong {
 
 #MyReviews {
   font-size: 20px;
+  outline: solid 2px var(--color2);
+  padding: 10px;
+  border-radius: 15px;
+  width: 30%;
+  text-align: center;
 }
 
 #MyReviews:hover {
-  color: var(--color2);
+  background-color: var(--color2);
+  font-size: 25px;
+  padding: 5px;
 }

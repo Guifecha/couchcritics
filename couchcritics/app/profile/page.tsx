@@ -7,7 +7,7 @@ import PocketBase from 'pocketbase';
 import { getSession } from '@/actions';
 import { redirect } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faFilm, faHandshake, faCakeCandles, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 
 export const dynamic = 'auto',
@@ -96,12 +96,25 @@ export default async function profile(){
           <h1 className='text-4xl mt-10'>Welcome to your profile, <b>{session.username}</b></h1>
           <div id="reviews" className='mt-10 flex'>
               <div id='profile-info'>
-                  <h2>Favorite Genre: <strong>{user.favgenre}</strong></h2>
-                  <h2>Birthday date: <strong>{user.birthday}</strong></h2>
-                  <h2>Joined us in: <strong>{date}</strong></h2>
-                  <h2> Description: <strong>{user.description}</strong></h2>
+              <div id='topinfo'>
+              <div className='ImgContainer'>
+              <img src="/images/profile.png" alt="Profile"  id='profileIMG'/>
+              <p>{session.username}</p> 
+              </div>
+              <div className='title'>
+              <Link href="/"><h1 className="text-2xl font-bold">Couch Critics</h1></Link>
+              </div>
+              </div>
+              <div className='Info'>
+                  <h2><FontAwesomeIcon icon={faFilm} id='genre' style={{ width: '1em', height: '1em', marginRight: '3px', color: '#66c1df'  }} />Favorite Genre: <strong>{user.favgenre}</strong></h2>
+                  <h2><FontAwesomeIcon icon={faCakeCandles} id='bday' style={{ width: '1em', height: '1em', marginRight: '3px',   }} />Birthday date: <strong>{user.birthday}</strong></h2>
+                  <h2><FontAwesomeIcon icon={faHandshake} id='joined' style={{ width: '1em', height: '1em', marginRight: '3px',   }} />Joined us in: <strong>{date}</strong></h2>
+                  <h2><FontAwesomeIcon icon={faAddressCard} id='desc' style={{ width: '1em', height: '1em', marginRight: '3px',   }} /> Description: <strong>{user.description}</strong></h2>
+              </div>
+              
               </div>
               <Link href="/reviews" id='MyReviews'>My Reviews</Link>
+              
           </div>
       </div>
   </main>
