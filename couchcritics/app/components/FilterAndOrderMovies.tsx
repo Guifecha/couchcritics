@@ -56,7 +56,6 @@ const FilterAndOrderMovies = () => {
             const panel = document.getElementById("moviepanel");
             panel.innerHTML = '';
             sortedMovies.forEach(movie => {
-                console.log(movie.title);
                 const movieDiv = document.createElement('div');
                 const link = document.createElement('a');
                 link.href = `/movies/${movie.id}`;

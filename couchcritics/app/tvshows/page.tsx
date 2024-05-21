@@ -37,22 +37,9 @@ export default async function tvshows(){
       <h1 className="text-6xl font-bold text-center mb-5" id="Welcome">
         TV SHOWS
       </h1>
-      <FilterAndOrderTvshows/>
+        <FilterAndOrderTvshows/>
       </div>
       <div id="tvshowpanel" className="grid grid-cols-3 gap-4 mt-20">
-        {tvshows.map(show => (
-          <Link href={`/tvshows/${show.id}`}>
-          <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg movie-container" id='movie'>
-            <img src={show.image_path} alt={show.title}  style={{ width: '250px', height: '350px' }} />
-            <p>{show.title}</p>
-            <div className='hoverInfo' >
-              <p>Genre: {show.genre}</p>
-              <p>Rating: {show.rating}</p>
-              <p>Year: {show.release}</p>
-          </div>
-          </div>
-          </Link>
-        ))}
       </div>
     </main>
   );
