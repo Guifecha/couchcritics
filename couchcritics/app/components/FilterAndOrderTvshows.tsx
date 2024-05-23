@@ -63,12 +63,12 @@ const FilterAndOrderTvShows = () => {
                     link.innerHTML =  `
                         <div key=${tvShow.id} class="bg-black text-white p-1 rounded-lg text-center movie-container" id="movie">
                         <img src=${tvShow.image_path} alt=${tvShow.title}  style="width: 250px; height: 350px;" />
-                        <p>${tvShow.title}</p>
-                        <div class='hoverInfo' >
-                          <p>Genre: ${tvShow.genre}</p>
-                          <p>Rating: ${tvShow.rating}</p>
-                          <p>Year: ${tvShow.release}</p>
-                        </div>`;
+                        <div id="infot">
+                        <p>${tvShow.genre}</p>
+                        <p> ${tvShow.rating} &#11088</p>
+                        <p>${tvShow.release}</p>
+                        </div>
+                        `;
                     tvShowDiv.appendChild(link);
                     panel.appendChild(tvShowDiv);
                 });

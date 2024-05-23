@@ -62,12 +62,12 @@ const FilterAndOrderMovies = () => {
                 link.innerHTML =  `
                     <div key=${movie.id} class="bg-black text-white p-1 rounded-lg text-center movie-container" id="movie">
                     <img src=${movie.image_path} alt=${movie.title}  style="width: 250px; height: 350px;" />
-                    <p>${movie.title}</p>
-                    <div class='hoverInfo' >
-                      <p>Genre: ${movie.genre}</p>
-                      <p>Rating: ${movie.rating}</p>
-                      <p>Year: ${movie.release}</p>
-                    </div>`;
+                    <div id="infot">
+                    <p>${movie.genre}</p>
+                    <p> ${movie.rating} &#11088</p>
+                    <p>${movie.release}</p>
+                    </div>
+                    `;
                 movieDiv.appendChild(link);
                 panel.appendChild(movieDiv);
             });

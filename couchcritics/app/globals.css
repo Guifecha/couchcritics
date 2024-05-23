@@ -969,3 +969,17 @@ strong {
   background-color: var(--color2);
   font-size: 20px;
 }
+
+#infot{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: var(--color2);
+}
+
+#infot2{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: var(--color1);
+}

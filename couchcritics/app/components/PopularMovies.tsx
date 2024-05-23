@@ -28,12 +28,11 @@ export default async function movies(){
             <Link href={`/movies/${movie.id}`}>
               <div key={movie.id} className="bg-black text-white p-1 rounded-lg text-center movie-container" id="PopularMovie">
                 <img src={movie.image_path} alt={movie.title}  style={{ width: '220px', height: '320px' }} />
-                <p>{movie.title}</p>  
-                <div className='hoverInfo' >
-                  <p>Genre: {movie.genre}</p>
-                  <p>Rating: {movie.rating}</p>
-                  <p>Year: {movie.release}</p>
-                </div>
+                <div id="infot2">
+                    <p>{movie.genre}</p>
+                    <p>{movie.rating} &#11088;</p>
+                    <p>{movie.release}</p>
+                    </div>
               </div>
             </Link>
           </div>

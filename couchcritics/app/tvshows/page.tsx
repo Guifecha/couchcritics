@@ -4,7 +4,6 @@ import PocketBase from 'pocketbase';
 import Link from 'next/link';
 import FilterAndOrderTvshows from '../components/FilterAndOrderTvshows';
 
-
 export default async function tvshows(){
 
   return (

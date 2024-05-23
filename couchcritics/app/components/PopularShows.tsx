@@ -28,12 +28,11 @@ export default async function tvshows(){
           <Link href={`/tvshows/${show.id}`}>
           <div key={show.id} className="bg-black text-white p-1 text-center rounded-lg movie-container" id='PopularShow'>
             <img src={show.image_path} alt={show.title}  style={{ width: '220px', height: '320px' }} />
-            <p>{show.title}</p>
-            <div className='hoverInfo' >
-              <p>Genre: {show.genre}</p>
-              <p>Rating: {show.rating}</p>
-              <p>Year: {show.release}</p>
-          </div>
+            <div id="infot2" >
+              <p>{show.genre}</p>
+              <p>{show.rating} &#11088;</p>
+              <p>{show.release}</p>
+              </div>
           </div>
           </Link>
           </div>
