@@ -1,5 +1,5 @@
 # couchcritics
- IHC project
+ IHC project - Nuno Pinho, Guilherme Santos, Adriano Costa
 
 To run this Next.js application on a new machine, you need to follow these steps:
 
@@ -16,8 +16,11 @@ Install the dependencies:
 npm install
 ```
 
+Create a ".env" file with this in it (for running purposes):
+  SESSION_SECRET = "J5TdLWGMZt2oQbRQx5A2pSz7Jb2rRdKh"
+  NODE_ENV = "production"
+  
 Start the application:
-
 ```
 npm run dev
 ```
