@@ -1,16 +1,16 @@
 # couchcritics
  IHC project
 
-To run a Next.js application on a new machine, you need to follow these steps:
+To run this Next.js application on a new machine, you need to follow these steps:
 
-Install Node.js and npm: Next.js requires Node.js and npm (which comes with Node.js) to run. https://nodejs.org/
+Install Node.js and npm: https://nodejs.org/
 
 Navigate to the project directory:
 
 ```
 cd couchcritics
 ```
-Install the dependencies with the following command:
+Install the dependencies:
 
 ```
 npm install
