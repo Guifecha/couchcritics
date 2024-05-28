@@ -16,8 +16,11 @@ Install the dependencies:
 npm install
 ```
 
+Create a ".env" file with this in it (for running porpuses):
+  SESSION_SECRET = "J5TdLWGMZt2oQbRQx5A2pSz7Jb2rRdKh"
+  NODE_ENV = "production"
+  
 Start the application:
-
 ```
 npm run dev
 ```
