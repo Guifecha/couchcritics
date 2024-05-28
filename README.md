@@ -10,13 +10,13 @@ Navigate to the project directory:
 ```
 cd couchcritics
 ```
-Install the dependencies: Your Next.js application likely has a number of dependencies that need to be installed. You can install them with the following command:
+Install the dependencies with the following command:
 
 ```
 npm install
 ```
 
-Start the application: Once all the dependencies are installed, you can start the application with the following command:
+Start the application:
 
 ```
 npm run dev
